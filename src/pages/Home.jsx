@@ -65,7 +65,7 @@ function OffersGrid() {
     },
     {
       title: "NIKE",
-      discount: "From ₹9 995.00",
+      discount: "Up to 15% Off",
       brand: "Nike ACG Storm-FIT ,Cascade Rains",
       image: "https://media-photos.depop.com/b1/26012151/1898558887_3b5dd51afacc49e89e804481b93ca2d8/P0.jpg",
     },
