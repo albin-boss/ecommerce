@@ -16,7 +16,7 @@ body {
     align-items: center;
     width: auto;
   }
-  
+
   header h1 {
     text-transform: Uppercase;
 margin-bottom: .3em;
@@ -53,7 +53,7 @@ background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
   
   /* Categories */
   nav {
-    background-color: #4a5568;
+    background-color: #000000;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -63,14 +63,14 @@ background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
   nav button {
     background: none;
     border: none;
-    color: rgb(58, 55, 55);
+    color: rgb(255, 255, 255);
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
   }
   
   nav button:hover {
-    color: #e6e6e6;
+    color: #005d9b;
   }
   
   /* Banner */

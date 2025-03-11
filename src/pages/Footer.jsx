@@ -82,26 +82,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer Section */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-left">
-          <span>Become a Seller</span>
-          <span>Advertise</span>
-          <span>Gift Cards</span>
-          <span>Help Center</span>
-        </div>
-        <div className="footer-bottom-right">
-          <p>© 2007-2025 Flipkart.com</p>
-          <div className="payment-options">
-            {/* Replace with actual payment icons if desired */}
-            <img src="https://via.placeholder.com/50x20?text=VISA" alt="Visa" />
-            <img src="https://via.placeholder.com/50x20?text=Master" alt="MasterCard" />
-            <img src="https://via.placeholder.com/50x20?text=RuPay" alt="RuPay" />
-            <img src="https://via.placeholder.com/50x20?text=Net+Banking" alt="Net Banking" />
-            <img src="https://via.placeholder.com/50x20?text=COD" alt="Cash on Delivery" />
-            <img src="https://via.placeholder.com/50x20?text=EMI" alt="EMI" />
-          </div>
-        </div>
-      </div>
+     
     </footer>
   );
 };

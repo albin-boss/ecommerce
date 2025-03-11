@@ -64,22 +64,17 @@ function OffersGrid() {
       image: "https://www.brayandscarff.com/_plugins/site-pages/wordpress/wp-content/uploads/2017/07/BlackSS1.jpg",
     },
     {
-      title: "Mosquito Bats & Lamps",
-      discount: "From ₹199",
-      brand: "Hit, Odomos & more",
-      image: "https://via.placeholder.com/150?text=Mosquito+Bats+%26+Lamps",
+      title: "NIKE",
+      discount: "Up to 15% Off",
+      brand: "Nike ACG Storm-FIT ,Cascade Rains",
+      image: "https://media-photos.depop.com/b1/26012151/1898558887_3b5dd51afacc49e89e804481b93ca2d8/P0.jpg",
     },
-    {
-      title: "BLDC Fans",
-      discount: "From ₹2,879",
-      brand: "Orient Electric, Bajaj & more",
-      image: "https://via.placeholder.com/150?text=BLDC+Fans",
-    },
+    
     {
       title: "Kids' Dresses",
       discount: "60-80% Off",
       brand: "Miss & Chief, Allen Solly & more",
-      image: "https://via.placeholder.com/150?text=Kids%27+Dresses",
+      image: "https://content.jdmagicbox.com/quickquotes/images_main/-2elorn68.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit",
     },
   ];
 
