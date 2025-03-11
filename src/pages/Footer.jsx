@@ -13,7 +13,7 @@ const Footer = () => {
             <li>Contact Us</li>
             <li>About Us</li>
             <li>Careers</li>
-            <li>Flipkart Stories</li>
+            <li>Premium Stories</li>
             <li>Press</li>
             <li>Corporate Information</li>
           </ul>
@@ -40,9 +40,6 @@ const Footer = () => {
             <li>Terms Of Use</li>
             <li>Security</li>
             <li>Privacy</li>
-            <li>Sitemap</li>
-            <li>Grievance Redressal</li>
-            <li>EPR Compliance</li>
           </ul>
         </div>
 
@@ -50,10 +47,10 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Mail Us:</h3>
           <address>
-            Flipkart Internet Private Limited,<br />
-            Buildings Alyssa, Begonia &amp; Clove Embassy Tech Village,<br />
-            Outer Ring Road, Devarabeesanahalli Village,<br />
-            Bengaluru, 560103,<br />
+            premium private limited,<br />
+            Buildings kalpavresha residancy,<br />
+            Thavarakkar main road,<br />
+            Bengaluru, 560029,<br />
             Karnataka, India
           </address>
           <div className="social-icons">
@@ -82,7 +79,26 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer Section */}
-     
+      <div className="footer-bottom">
+        <div className="footer-bottom-left">
+          <span>Become a Seller</span>
+          <span>Advertise</span>
+          <span>Gift Cards</span>
+          <span>Help Center</span>
+        </div>
+        <div className="footer-bottom-right">
+          <p>© 2007-2025 Flipkart.com</p>
+          <div className="payment-options">
+            {/* Replace with actual payment icons if desired */}
+            <img src="https://via.placeholder.com/50x20?text=VISA" alt="Visa" />
+            <img src="https://via.placeholder.com/50x20?text=Master" alt="MasterCard" />
+            <img src="https://via.placeholder.com/50x20?text=RuPay" alt="RuPay" />
+            <img src="https://via.placeholder.com/50x20?text=Net+Banking" alt="Net Banking" />
+            <img src="https://via.placeholder.com/50x20?text=COD" alt="Cash on Delivery" />
+            <img src="https://via.placeholder.com/50x20?text=EMI" alt="EMI" />
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
