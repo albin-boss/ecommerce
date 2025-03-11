@@ -32,7 +32,7 @@ function OffersGrid() {
     {
       title: "Furniture",
       discount: "Up to 70% Off",
-      brand: "Sunscreens, Face serums & more",
+      brand: "chairs, cabinets & more",
       image: "https://www.housedigest.com/img/gallery/20-ways-to-implement-dark-paint-colors-in-your-home/intro-1659519981.jpg",
     },
     {
@@ -44,20 +44,20 @@ function OffersGrid() {
     {
       title: "Beauty",
       discount: "Up to 15% Off",
-      brand: "Milton, Cello & more",
-      image: "https://via.placeholder.com/150?text=Storage+%26+Containers",
+      brand: "Face serums, Foundation & more",
+      image: "https://png.pngtree.com/background/20230528/original/pngtree-makeup-accessories-arranged-on-a-black-background-picture-image_2781512.jpg",
     },
     {
-      title: "UCB, Arrow..",
-      discount: "60-80% Off",
-      brand: "T-shirts, Shirts, Jeans…",
-      image: "https://via.placeholder.com/150?text=UCB%2C+Arrow",
+      title: "Dry fruits",
+      discount: "Up to 65% Off",
+      brand: "Dates, Almond, Hazelnuts…",
+      image: "https://img.freepik.com/premium-photo/dry-fruits-image-dark-wooden-surface_1036998-330106.jpg",
     },
     {
-      title: "Men's sports shoes",
-      discount: "Min. 50% Off",
-      brand: "New Balance & more",
-      image: "https://via.placeholder.com/150?text=Men%27s+Sports+Shoes",
+      title: "Appliances",
+      discount: "Max. 20% Off",
+      brand: "Refrigerator & more",
+      image: "https://www.brayandscarff.com/_plugins/site-pages/wordpress/wp-content/uploads/2017/07/BlackSS1.jpg",
     },
     {
       title: "Mosquito Bats & Lamps",
