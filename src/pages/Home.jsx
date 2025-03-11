@@ -1,6 +1,9 @@
+// src/Home.jsx
 import React, { useState } from "react";
 import { FaSearch, FaShoppingCart, FaUser, FaCommentDots, FaTimes } from "react-icons/fa";
+import footer from "./Footer";
 import "./home.css";
+import Footer from "./Footer";
 
 const categories = [
   "Mobiles",
@@ -19,7 +22,6 @@ const items = [
   { name: "Backpack", price: "₹799", image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/9739a943-167d-4975-937c-70f6a6837add.__CR0,0,970,600_PT0_SX970_V1___.jpg" },
 ];
 
-// Dark-themed OffersGrid component with larger sizing & inline styles
 function OffersGrid() {
   const offersData = [
     {
@@ -78,7 +80,6 @@ function OffersGrid() {
     },
   ];
 
-  // Inline style objects for the dark-themed grid
   const gridStyle = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
@@ -87,7 +88,7 @@ function OffersGrid() {
   };
 
   const cardStyle = {
-    background: "#444", // Dark background for cards
+    background: "#444",
     border: "1px solid #555",
     borderRadius: "8px",
     padding: "16px",
@@ -187,7 +188,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Today's Offers using dark-themed grid */}
+      {/* Today's Offers */}
       <section className="offers-grid-section">
         <h3>Today's Offers</h3>
         <OffersGrid />
@@ -208,6 +209,8 @@ const Home = () => {
           <p>Hello! How can we assist you today?</p>
         </div>
       )}
+
+<Footer />
     </div>
   );
 };
