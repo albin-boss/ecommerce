@@ -145,7 +145,7 @@ const Home = () => {
     <div className="container">
       {/* Header */}
       <header>
-        <h1>BOSS</h1>
+        <h1>PREMIUM</h1>
         <div className="search-box">
           <FaSearch />
           <input type="text" placeholder="Search for Products, Brands and More" />
