@@ -19,15 +19,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 2: GROUP COMPANIES */}
-        <div className="footer-column">
-          <h3>GROUP COMPANIES</h3>
-          <ul>
-            <li>Myntra</li>
-            <li>Cleartrip</li>
-            <li>Shopsy</li>
-          </ul>
-        </div>
+        
 
         {/* Column 3: HELP */}
         <div className="footer-column">
