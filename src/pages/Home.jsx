@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { FaSearch, FaShoppingCart, FaUser, FaCommentDots, FaTimes } from "react-icons/fa";
 import footer from "./Footer";
 import "./home.css";
+import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
+
 
 const categories = [
   "Mobiles",
