@@ -20,7 +20,7 @@ const App = () => {
     </section>
     <nav class="navbar">
         <div class="navbar-container">
-            <input type="checkbox" name="" id="checkbox">
+            <input type="checkbox" name="" id="checkbox"/>
             <div class="hamburger-lines">
                 <span class="line line1"></span>
                 <span class="line line2"></span>
@@ -33,14 +33,14 @@ const App = () => {
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="logo">
-                <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="">
+                <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt=""/>
             </div>
         </div>
     </nav>
     <section id="home">
         <div class="home_page ">
             <div class="home_img ">
-                <img src="https://i.postimg.cc/t403yfn9/home2.jpg" alt="img ">
+                <img src="https://i.postimg.cc/t403yfn9/home2.jpg" alt="img "/>
             </div>
             <div class="home_txt ">
                 <p class="collectio ">SUMMER COLLECTION</p>
@@ -310,7 +310,7 @@ const App = () => {
             <h2>Hot Sales</h2>
             <div class="best-seller">
                 <div class="best-p1">
-                    <img src="https://i.postimg.cc/jS7pSQLf/na4.png" alt="img">
+                    <img src="https://i.postimg.cc/jS7pSQLf/na4.png" alt="img"/>
                     <div class="best-p1-txt">
                         <div class="name-of-p">
                             <p>PS England Shoes</p>
@@ -362,7 +362,7 @@ const App = () => {
                     </div>
                 </div>
                 <div class="best-p1">
-                    <img src="https://i.postimg.cc/RhVP7YQk/hs1.png" alt="img">
+                    <img src="https://i.postimg.cc/RhVP7YQk/hs1.png" alt="img"/>
                     <div class="best-p1-txt">
                         <div class="name-of-p">
                             <p>PS England T-Shirt</p>
@@ -388,7 +388,7 @@ const App = () => {
                     </div>
                 </div>
                 <div class="best-p1">
-                    <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="img">
+                    <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="img"/>
                     <div class="best-p1-txt">
                         <div class="name-of-p">
                             <p>PS England Bag</p>
@@ -424,7 +424,7 @@ const App = () => {
         <div class="l-news container">
             <div class="l-news1">
                 <div class="news1-img">
-                    <img src="https://i.postimg.cc/2y6wbZCm/news1.jpg" alt="img">
+                    <img src="https://i.postimg.cc/2y6wbZCm/news1.jpg" alt="img"/>
                 </div>
                 <div class="news1-conte">
                     <div class="date-news1">
@@ -436,7 +436,7 @@ const App = () => {
             </div>
             <div class="l-news2">
                 <div class="news2-img">
-                    <img src="https://i.postimg.cc/9MXPK7RT/news2.jpg" alt="img">
+                    <img src="https://i.postimg.cc/9MXPK7RT/news2.jpg" alt="img"/>
                 </div>
                 <div class="news2-conte">
                     <div class="date-news2">
@@ -448,7 +448,7 @@ const App = () => {
             </div>
             <div class="l-news3">
                 <div class="news3-img">
-                    <img src="https://i.postimg.cc/x1KKdRLM/news3.jpg" alt="img">
+                    <img src="https://i.postimg.cc/x1KKdRLM/news3.jpg" alt="img"/>
                 </div>
                 <div class="news3-conte">
                     <div class="date-news3">
@@ -479,8 +479,8 @@ const App = () => {
                     <p>HW95+C9C, Lorem ipsum dolor sit.<br>411014</p>
                 </div>
                 <div class="form-details">
-                    <input type="text" name="name" id="name" placeholder="Name" required>
-                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="text" name="name" id="name" placeholder="Name" required/>
+                    <input type="email" name="email" id="email" placeholder="Email" required/>
                     <textarea name="message" id="message" cols="52" rows="7" placeholder="Message" required></textarea>
                     <button>SEND MESSAGE</button>
                 </div>
@@ -491,7 +491,7 @@ const App = () => {
     <footer>
         <div class="footer-container container">
             <div class="content_1">
-                <img src="https://i.postimg.cc/htGyQ4JB/footer-logo.png" alt="logo">
+                <img src="https://i.postimg.cc/htGyQ4JB/footer-logo.png" alt="logo"/>
                 <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
                 <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
             </div>
@@ -511,12 +511,12 @@ const App = () => {
             </div>
             <div class="content_4">
                 <h4>NEWLETTER</h4>
-                <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+                <p>Be the first to know about new<br/>arrivals, look books, sales & promos!</p>
                 <div class="f-mail">
-                    <input type="email" placeholder="Your Email">
+                    <input type="email" placeholder="Your Email"/>
                     <i class='bx bx-envelope'></i>
                 </div>
-                <hr>
+                <hr/>
             </div>
         </div>
         <div class="f-design">
