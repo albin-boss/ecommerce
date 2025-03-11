@@ -1,49 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Footer, Navbar } from "../components";
+import "./login.css"; // Import the external CSS file
 
 const Login = () => {
   return (
-    <>
-      <Navbar />
-      <div className="container my-3 py-3">
-        <h1 className="text-center">Login</h1>
-        <hr />
-        <div class="row my-4 h-100">
-          <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-            <form>
-              <div class="my-3">
-                <label for="display-4">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder="name@example.com"
-                />
-              </div>
-              <div class="my-3">
-                <label for="floatingPassword display-4">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="floatingPassword"
-                  placeholder="Password"
-                />
-              </div>
-              <div className="my-3">
-                <p>New Here? <Link to="/register" className="text-decoration-underline text-info">Register</Link> </p>
-              </div>
-              <div className="text-center">
-                <button class="my-2 mx-auto btn btn-dark" type="submit" disabled>
-                  Login
-                </button>
-              </div>
-            </form>
-          </div>
+    <div className="login-container">
+      <div className="login-box">
+        <h2 className="login-title">Welcome Back</h2>
+
+        {/* Email Input */}
+        <input type="email" placeholder="Email" className="login-input" />
+
+        {/* Password Input */}
+        <input type="password" placeholder="Password" className="login-input" />
+
+        {/* Remember Me & Forgot Password */}
+        <div className="login-options">
+          <label>
+            <input type="checkbox" className="login-checkbox" />
+            Remember me
+          </label>
+          <a href="#" className="login-forgot">Forgot Password?</a>
+        </div>
+
+        {/* Login Button */}
+        <button className="login-button">Login</button>
+
+        {/* Divider */}
+        <div className="login-divider">or</div>
+
+        {/* Social Login Buttons */}
+        <div className="login-social">
+          <button className="social-btn google">
+            <img src="/google.svg" alt="Google" className="social-icon" />
+            Google
+          </button>
+          <button className="social-btn apple">
+            <img src="/apple.svg" alt="Apple" className="social-icon" />
+            Apple
+          </button>
+        </div>
+
+        {/* Register Link */}
+        <div className="login-register">
+          Don't have an account? <a href="#" className="login-signup">Sign up</a>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 

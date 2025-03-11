@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaSearch, FaShoppingCart, FaUser, FaCommentDots, FaTimes } from "react-icons/fa";
 import "./home.css";
-
+import { useNavigate } from "react-router-dom";
 const categories = [
   "Mobiles",
   "Fashion",
@@ -21,6 +21,7 @@ const items = [
 
 // Dark-themed OffersGrid component with larger sizing & inline styles
 function OffersGrid() {
+  
   const offersData = [
     {
       title: "Fitness accessories",
@@ -139,6 +140,7 @@ function OffersGrid() {
 }
 
 const Home = () => {
+  const navigate = useNavigate();
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
@@ -151,7 +153,7 @@ const Home = () => {
           <input type="text" placeholder="Search for Products, Brands and More" />
         </div>
         <div className="actions">
-          <button className="button">
+          <button className="button" onClick={() => navigate("/login")}>
             <FaUser /> Login
           </button>
           <button className="button">
