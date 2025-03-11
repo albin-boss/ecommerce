@@ -23,6 +23,7 @@ const items = [
 ];
 
 function OffersGrid() {
+  
   const offersData = [
     {
       title: "Fitness accessories",
@@ -51,14 +52,14 @@ function OffersGrid() {
     {
       title: "Dry fruits",
       discount: "Up to 65% Off",
-      brand: "T-shirts, Shirts, Jeans…",
-      image: "https://via.placeholder.com/150?text=UCB%2C+Arrow",
+      brand: "Dates, Almond, Hazelnuts…",
+      image: "https://img.freepik.com/premium-photo/dry-fruits-image-dark-wooden-surface_1036998-330106.jpg",
     },
     {
-      title: "Men's sports shoes",
-      discount: "Min. 50% Off",
-      brand: "New Balance & more",
-      image: "https://via.placeholder.com/150?text=Men%27s+Sports+Shoes",
+      title: "Appliances",
+      discount: "Max. 20% Off",
+      brand: "Refrigerator & more",
+      image: "https://www.brayandscarff.com/_plugins/site-pages/wordpress/wp-content/uploads/2017/07/BlackSS1.jpg",
     },
     {
       title: "Mosquito Bats & Lamps",
@@ -140,19 +141,20 @@ function OffersGrid() {
 }
 
 const Home = () => {
+  const navigate = useNavigate();
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
     <div className="container">
       {/* Header */}
       <header>
-        <h1>BOSS</h1>
+        <h1>PREMIUM</h1>
         <div className="search-box">
           <FaSearch />
           <input type="text" placeholder="Search for Products, Brands and More" />
         </div>
         <div className="actions">
-          <button className="button">
+          <button className="button" onClick={() => navigate("/login")}>
             <FaUser /> Login
           </button>
           <button className="button">
