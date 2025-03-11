@@ -1,0 +1,197 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a202c;
+    color: white;
+  }
+  
+  /* Header */
+  header {
+    background-color:transparent;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+  }
+  
+  header h1 {
+    text-transform: Uppercase;
+margin-bottom: .3em;
+font-family: 'Rubik', sans-serif;
+font-size: 5rem;
+color: #E4E5E6;
+background: linear-gradient(to right, #2b2b69, #828385, #302873);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+  }
+.p1 {
+    font-family: 'Rubik', sans-serif;
+font-size: 3rem;
+color: #E4E5E6;
+background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}  
+  .search-box {
+    display: flex;
+    align-items: center;
+    background-color: #4a5568;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  
+  .search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    padding-left: 8px;
+  }
+  
+  /* Categories */
+  nav {
+    background-color: #4a5568;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  nav button {
+    background: none;
+    border: none;
+    color: rgb(58, 55, 55);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  nav button:hover {
+    color: #e6e6e6;
+  }
+  
+  /* Banner */
+  .banner {
+    background-image: url("https://technosurvivor.com/wp-content/uploads/2021/06/GADGETS1.jpg");
+    padding: 100px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    height: 300px;
+  }
+  
+  /* Top Offers */
+  .offers {
+    padding: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+  }
+  
+  .item-card {
+    background-color: #647793;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .item-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .item-card p {
+    margin: 5px 0;
+  }
+  
+  /* Chat Popup */
+  .chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3182ce;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chat-popup {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    background-color: #2d3748;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  .button {
+    min-width: 120px;
+  
+    position: relative;
+    cursor: pointer;
+  
+    padding: 12px 17px;
+    border: 0;
+    border-radius: 7px;
+  
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: radial-gradient(
+      ellipse at bottom,
+      rgba(71, 81, 92, 1) 0%,
+      rgba(11, 21, 30, 1) 45%
+    );
+  
+    color: rgb(255, 255, 255, 0.66);
+  
+    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  .button::before {
+    content: "";
+    width: 70%;
+    height: 1px;
+  
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+  
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0.2;
+  
+    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  .button:hover {
+    color: rgb(255, 255, 255, 1);
+    transform: scale(1.1) translateY(-3px);
+  }
+  
+  .button:hover::before {
+    opacity: 1;
+  }
+  
