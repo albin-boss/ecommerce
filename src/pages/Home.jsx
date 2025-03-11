@@ -69,12 +69,7 @@ function OffersGrid() {
       brand: "Nike ACG Storm-FIT ,Cascade Rains",
       image: "https://media-photos.depop.com/b1/26012151/1898558887_3b5dd51afacc49e89e804481b93ca2d8/P0.jpg",
     },
-    {
-      title: "BLDC Fans",
-      discount: "From ₹2,879",
-      brand: "Orient Electric, Bajaj & more",
-      image: "https://www.shopatorion.com/admin/productimage/Luker%20BLDC%20Ceiling%20Fan%20Size%20Zero%20Crown%201200mm%20(48%20inch)%203%20Blade%20Black-Black-chrome-2.jpg",
-    },
+    
     {
       title: "Kids' Dresses",
       discount: "60-80% Off",
