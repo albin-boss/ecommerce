@@ -16,7 +16,7 @@
   
   .card-img {
     width: 100%;
-    height: auto;
+    height: 800px;
     border-radius: 0.5rem 0 0 0.5rem;
   }
   
@@ -107,4 +107,3 @@
   .form-check-inline {
     margin-right: 0.75rem;
   }
-  

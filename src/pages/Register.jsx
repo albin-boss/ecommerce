@@ -9,7 +9,7 @@ function Register() {
           <div className="card my-4">
             <div className="row no-gutters">
               <div className="col-md-6 d-none d-md-block">
-                <img
+                <img 
                   src="https://wallpaperaccess.com/full/2338249.jpg"
                   alt="Sample"
                   className="card-img rounded-start"
@@ -120,7 +120,15 @@ function Register() {
                     <input
                       type="text"
                       id="form5"
-                      placeholder="AdderssSS"
+                      placeholder="Address"
+                      className="form-control form-control-lg"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <input
+                      type="int"
+                      id="form5"
+                      placeholder="phone"
                       className="form-control form-control-lg"
                     />
                   </div>
