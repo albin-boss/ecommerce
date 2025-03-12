@@ -10,7 +10,7 @@ function Register() {
             <div className="row no-gutters">
               <div className="col-md-6 d-none d-md-block">
                 <img 
-                  src="https://wallpaperaccess.com/full/2338249.jpg"
+                  src="https://pbs.twimg.com/ext_tw_video_thumb/1847649102181388288/pu/img/icHTcvUQRLn7rv-W.jpg"
                   alt="Sample"
                   className="card-img rounded-start"
                 />
