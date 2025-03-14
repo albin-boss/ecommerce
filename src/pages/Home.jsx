@@ -154,7 +154,7 @@ const Home = () => {
           <button className="button" onClick={() => navigate("/login")}>
             <FaUser /> Login
           </button>
-          <button className="button">
+          <button className="button" onClick={() => navigate("/cart")}>
             <FaShoppingCart /> Cart
           </button>
         </div>

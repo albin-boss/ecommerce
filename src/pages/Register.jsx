@@ -3,7 +3,7 @@ import './register.css';
 
 function Register() {
   return (
-    <div className="container-fluid bg-dark">
+    <div className="container-fluid bg-dak">
       <div className="row d-flex justify-content-center align-items-center h-100">
         <div className="col-12 col-md-8 col-lg-6">
           <div className="card my-4">
