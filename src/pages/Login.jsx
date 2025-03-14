@@ -1,9 +1,12 @@
 import React from "react";
 import "./login.css"; // Import the external CSS file
 import { useNavigate } from "react-router-dom";
+import { GoogleOAuthProvider,GoogleLogin } from "@react-oauth/google";
+
 const Login = () => {
    const navigate = useNavigate();
   return (
+    <GoogleOAuthProvider clientId="186458287471-ukm5cj3kv3f7l4c9158obpc5btmc0874.apps.googleusercontent.com">
     <div className="login-container">
       <div className="login-box">
         <h2 className="login-title">Welcome Back</h2>
@@ -32,8 +35,7 @@ const Login = () => {
         {/* Social Login Buttons */}
         <div className="login-social">
           <button className="social-btn google">
-            <img src="https://img.freepik.com/free-psd/google-icon-isolated-3d-render-illustration_47987-9777.jpg" alt="Google" className="social-icon" />
-            Google
+            <GoogleLogin onSuccess={()=>{}}onError={()=>{}}/>
           </button>
           
         </div>
@@ -44,6 +46,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </GoogleOAuthProvider>
   );
 };
 
