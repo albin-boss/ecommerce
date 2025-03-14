@@ -47,7 +47,7 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Mail Us:</h3>
           <address>
-            premium private limited,<br />
+            Premium private limited,<br />
             Buildings kalpavresha residancy,<br />
             Thavarakkar main road,<br />
             Bengaluru, 560029,<br />
@@ -67,39 +67,18 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Registered Office Address:</h3>
           <address>
-            Flipkart Internet Private Limited,<br />
-            Buildings Alyssa, Begonia &amp; Clove Embassy Tech Village,<br />
-            Outer Ring Road, Devarabeesanahalli Village,<br />
-            Bengaluru, 560103,<br />
+            Premium private limited,<br />
+            Buildings kalpavresha residancy,<br />
+            Thavarakkar main road,<br />
+            Bengaluru, 560026,<br />
             Karnataka, India<br />
-            CIN: U51109KA2012PTC066107<br />
-            Telephone: 044-45614700 / 044-67415800
+            Telephone: 9074420988/ 8590685088
           </address>
         </div>
       </div>
-
-      {/* Bottom Footer Section */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-left">
-          <span>Become a Seller</span>
-          <span>Advertise</span>
-          <span>Gift Cards</span>
-          <span>Help Center</span>
-        </div>
-        <div className="footer-bottom-right">
-          <p>© 2007-2025 Flipkart.com</p>
-          <div className="payment-options">
-            {/* Replace with actual payment icons if desired */}
-            <img src="https://via.placeholder.com/50x20?text=VISA" alt="Visa" />
-            <img src="https://via.placeholder.com/50x20?text=Master" alt="MasterCard" />
-            <img src="https://via.placeholder.com/50x20?text=RuPay" alt="RuPay" />
-            <img src="https://via.placeholder.com/50x20?text=Net+Banking" alt="Net Banking" />
-            <img src="https://via.placeholder.com/50x20?text=COD" alt="Cash on Delivery" />
-            <img src="https://via.placeholder.com/50x20?text=EMI" alt="EMI" />
-          </div>
-        </div>
-      </div>
-    </footer>
+     </footer>
+      
+        
   );
 };
 
