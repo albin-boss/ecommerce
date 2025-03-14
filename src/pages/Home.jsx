@@ -168,10 +168,14 @@ const Home = () => {
       </nav>
 
       {/* Banner */}
-      <div className="banner">
-        <h1>Electronics & Gadgets</h1>
-        <p className="p1">Apple, Samsung & more - Limited Deals!</p>
-      </div>
+      
+  <div class="gallery-wrap">
+    <div class="item item-1"></div>
+    <div class="item item-2"></div>
+    <div class="item item-3"></div>
+    <div class="item item-4"></div>
+    <div class="item item-5"></div>
+  </div>
 
       {/* Top Offers */}
       <section className="offers">
