@@ -34,7 +34,7 @@ function OffersGrid() {
       image: "https://wallpaperaccess.com/full/2465431.jpg",
     },
     {
-      title: "Furniture",
+      title: "Furnitures",
       discount: "Up to 70% Off",
       brand: "chairs, cabinets & more",
       image: "https://www.housedigest.com/img/gallery/20-ways-to-implement-dark-paint-colors-in-your-home/intro-1659519981.jpg",
