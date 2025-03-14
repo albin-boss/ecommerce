@@ -2,7 +2,8 @@
 
 body {
   font-family: 'Manrope', sans-serif;
-  background:#eee;
+  background-image: url('https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-5120x2880-8324.png'); /* Update with your actual image path */
+    background-size: cover;
 }
 
 .size span {
