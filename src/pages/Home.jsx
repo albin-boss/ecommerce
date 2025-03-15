@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaSearch, FaShoppingCart, FaUser, FaCommentDots, FaTimes } from "react-icons/fa";
 import footer from "./Footer";
 import "./home.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import Footer from "./Footer";
 
 
@@ -17,7 +17,9 @@ const categories = [
 ];
 
 const items = [
-  { name: "Running Shoes", price: "₹2,000", image: "https://wallpaperaccess.com/full/5093060.jpg" },
+  { name: "Running Shoes", price: "₹2,000", image: "https://wallpaperaccess.com/full/5093060.jpg" ,
+    link:"/card",
+  },
   { name: "Smartphone", price: "₹12,999", image: "https://www.apple.com/v/iphone-16-pro/a/images/meta/iphone-16-pro_specs__dnmdxvp6g7wy_og.png" },
   { name: "Headphones", price: "₹1,499", image: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697016306/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/300119_9_vl8ja8.png?tr=w-1000" },
   { name: "Watch", price: "₹999", image: "https://bgr.com/wp-content/uploads/2023/09/Apple-Watch-Series-9.jpg?quality=82&strip=all" },
@@ -62,6 +64,7 @@ function OffersGrid() {
       discount: "Max. 20% Off",
       brand: "Refrigerator & more",
       image: "https://www.brayandscarff.com/_plugins/site-pages/wordpress/wp-content/uploads/2017/07/BlackSS1.jpg",
+     
     },
     {
       title: "Ornaments",
@@ -185,6 +188,7 @@ const Home = () => {
             <div key={index} className="item-card">
               <img src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
+              <Link to={item.link}>read more</Link>
               <p>{item.price}</p>
             </div>
           ))}
