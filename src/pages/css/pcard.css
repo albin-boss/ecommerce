@@ -34,7 +34,7 @@
     position: fixed;
     left: 0;
     top: 64px;
-    background: #475e76;
+    background:transparent;
     height: 100vh;
     transition: width 0.3s;
   }
@@ -69,11 +69,12 @@
   }
   
   .sidebar-item {
-    background: white;
+    background:rgba(57, 56, 56, 0.3);
     padding: 10px;
     margin-bottom: 5px;
     cursor: pointer;
     border-radius: 4px;
+    color: white;
   }
   
   /* Product Page */

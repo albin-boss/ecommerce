@@ -173,7 +173,9 @@ const Home = () => {
       {/* Banner */}
       
   <div class="gallery-wrap">
-    <div class="item item-1"></div>
+    <div class="item item-1">
+      
+    </div>
     <div class="item item-2"></div>
     <div class="item item-3"></div>
     <div class="item item-4"></div>
@@ -182,7 +184,7 @@ const Home = () => {
 
       {/* Top Offers */}
       <section className="offers">
-        <h3>Top Offers!</h3>
+        <h3 >Top Offers!</h3>
         <div className="grid-container">
           {items.map((item, index) => (
             <div key={index} className="item-card">
@@ -197,7 +199,7 @@ const Home = () => {
 
       {/* Today's Offers */}
       <section className="offers-grid-section">
-        <h3>Today's Offers</h3>
+        <h3 >Today's Offers</h3>
         <OffersGrid />
       </section>
 

@@ -90,6 +90,10 @@ background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
     padding: 20px;
   }
   
+  h3{
+   color: white;
+  }
+  
   .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -202,7 +206,7 @@ background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 70vh;
+  height: 50vh;
 }
 
 .item {
@@ -221,24 +225,25 @@ background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
 }
 
 .item-1 {
-  background-image: url("https://images.unsplash.com/photo-1591378603223-e15b45a81640?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://cdna.artstation.com/p/assets/images/images/036/002/188/large/m-n-vinit-img-20210322-204116-186.jpg?1616482578");
 }
 
 .item-2 {
-  background-image: url("https://images.unsplash.com/photo-1662788019531-89849ebb754a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://computershopdubai.com/wp-content/uploads/2022/02/Asus-laptop-shop-near-me.jpg");
 }
 
 .item-3 {
-  background-image: url("https://images.unsplash.com/photo-1508357710528-af900c15fe96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://th.bing.com/th/id/R.b34118f5f050ec13b50a14d876f58558?rik=5bQQECmgsenD3g&riu=http%3a%2f%2fgraphicgoogle.com%2fwp-content%2fuploads%2f2017%2f10%2fFacebook-New-Fashion-Sale-Banner.jpg&ehk=cZjhCfdi%2fqQLhrZBnjXF%2bq65d%2fwT4aEvKaZvpY%2bGvhI%3d&risl=&pid=ImgRaw&r=0");
 }
 
 .item-4 {
-  background-image: url("https://images.unsplash.com/photo-1652182992424-44dbb8539072?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/product-banner-ad-design-template-fb055c612bc41382f49e0658612bf9f0_screen.jpg?ts=1663348558");
 }
 
 .item-5 {
-  background-image: url("https://images.unsplash.com/photo-1671430373742-cfc70b151e79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/82c7c3116097195.605b347abc218.jpg");
 }
+
 
 .social {
   position: absolute;

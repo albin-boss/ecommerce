@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import {Link} from "react-router-dom";
 import "./css/pcard.css";
 const Navbar = () => {
   return (
     <nav className="navbar">
       <h1 className="navbar-title">E-Commerce</h1>
       <ul className="navbar-menu">
-        <li><a href="#">Home</a></li>
+        <li><Link to="/"> Home</Link></li>
         <li><a href="#">Products</a></li>
         <li><a href="#">Cart</a></li>
       </ul>
@@ -58,9 +59,9 @@ const ReviewSection = () => {
 
 const SimilarProducts = () => {
   const products = [
-    { name: "TRIGGR Air X2", price: "₹799", image: "image1.jpg" },
-    { name: "TRIGGR Bass Z5", price: "₹999", image: "image2.jpg" },
-    { name: "TRIGGR Elite X6", price: "₹1,199", image: "image3.jpg" }
+    { name: "NIKE SHOES", price: "₹2999", image: "https://tse1.mm.bing.net/th?id=OIP.7UaM0_ayvUPsbV5vAiqjuwHaEK&pid=Api&P=0&h=180" },
+    { name: "ADDIDAS SHOES", price: "₹1999", image: "https://www.copemlegit.com/wp-content/uploads/wpdesktop/adidas-eqt-shoes-desktop.jpg" },
+    { name: "PUMA SHOES", price: "₹3599", image: "https://wallpaperaccess.com/full/3962552.jpg" }
   ];
 
   return (
@@ -85,10 +86,10 @@ const ProductCard = () => {
         <Navbar />
         <div className="product-content">
           <div className="product-card">
-            <img src="product-image.jpg" alt="TRIGGR Kraken X4" className="product-image" />
-            <h2 className="product-title">TRIGGR Kraken X4</h2>
+            <img src="https://wallpaperaccess.com/full/5093060.jpg" alt="TRIGGR Kraken X4" className="product-image" />
+            <h2 className="product-title">NIKE SHOES</h2>
             <p className="product-description">13mm Drivers, 40ms Latency, ENC, 60H Battery</p>
-            <p className="product-price">₹899 <span className="product-discount">₹3,999</span> (77% OFF)</p>
+            <p className="product-price">₹2000 <span className="product-discount">₹3,999</span> (77% OFF)</p>
             <div className="product-actions">
               <button className="button primary">Add to Cart</button>
               <button className="button secondary">Buy Now</button>
