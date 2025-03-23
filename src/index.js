@@ -22,6 +22,7 @@ import ProductCard from "./pages/productcard";
 
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import Dashboard from "./admin/dashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -41,6 +42,7 @@ root.render(
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/product/*" element={<PageNotFound />} />
+          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </Provider>
     </ScrollToTop>
