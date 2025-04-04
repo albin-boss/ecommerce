@@ -9,7 +9,7 @@ const Login = () => {
     <GoogleOAuthProvider clientId="186458287471-ukm5cj3kv3f7l4c9158obpc5btmc0874.apps.googleusercontent.com">
     <div className="login-container">
       <div className="login-box">
-        <h2 className="login-title">Welcome Back</h2>
+        <h2 className="login-title">Login</h2>
 
         {/* Email Input */}
         <input type="email" placeholder="Email" className="login-input" />
