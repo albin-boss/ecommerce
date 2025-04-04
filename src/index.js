@@ -19,7 +19,7 @@ import {
   PageNotFound,
 } from "./pages";
 import ProductCard from "./pages/productcard";
-
+import ProductList from "./pages/ProductList";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import Dashboard from "./admin/dashboard";
@@ -41,7 +41,7 @@ root.render(
           <Route path="/register" element={<Register />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/product/*" element={<PageNotFound />} />
+          <Route path="/productlist" element={<ProductList />} />
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/afterlogin" element={<Afterlogin/>}/>
         </Routes>

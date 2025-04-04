@@ -74,30 +74,30 @@ const ITEMS_PER_PAGE = 5;
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.name} className="product-image" />
-      <div className="product-details">
-        <h2 className="product-name">{product.name}</h2>
-        <div className="product-rating">
-          <span className="rating-value">⭐ {product.rating}</span>
-          <span className="rating-reviews">({product.reviews} Reviews)</span>
+    <div className="custom-product-card">
+      <img src={product.image} alt={product.name} className="custom-product-image" />
+      <div className="custom-product-details">
+        <h2 className="custom-product-name">{product.name}</h2>
+        <div className="custom-product-rating">
+          <span className="custom-rating-value">⭐ {product.rating}</span>
+          <span className="custom-rating-reviews">({product.reviews} Reviews)</span>
         </div>
-        <p className="product-review">"{product.customerReview}"</p>
-        <ul className="product-features">
+        <p className="custom-product-review">"{product.customerReview}"</p>
+        <ul className="custom-product-features">
           {product.features.map((feature, index) => (
             <li key={index}>• {feature}</li>
           ))}
         </ul>
-        <div className="product-price">
-          <span className="current-price">₹{product.price}</span>
-          <span className="original-price">₹{product.originalPrice}</span>
-          <span className="discount">{product.discount}</span>
+        <div className="custom-product-price">
+          <span className="custom-current-price">₹{product.price}</span>
+          <span className="custom-original-price">₹{product.originalPrice}</span>
+          <span className="custom-discount">{product.discount}</span>
         </div>
-        <p className="product-meta">Category: {product.category}</p>
-        <p className="product-meta">RAM: {product.ram}</p>
-        <p className="product-meta">ROM: {product.rom}</p>
-        <p className="product-meta">Discount: {product.discountPercentage}%</p>
-        <button className="add-to-cart">Add to Cart</button>
+        <p className="custom-product-meta">Category: {product.category}</p>
+        <p className="custom-product-meta">RAM: {product.ram}</p>
+        <p className="custom-product-meta">ROM: {product.rom}</p>
+        <p className="custom-product-meta">Discount: {product.discountPercentage}%</p>
+        <button className="custom-add-to-cart">Add to Cart</button>
       </div>
     </div>
   );
@@ -111,10 +111,10 @@ export default function ProductList() {
   const paginatedProducts = allProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
-    <div className="product-page">
-      <aside className="sidebar">
-        <h2 className="sidebar-title">Filters</h2>
-        <div className="filter-group">
+    <div className="custom-product-page">
+      <aside className="custom-sidebar">
+        <h2 className="custom-sidebar-title">Filters</h2>
+        <div className="custom-filter-group">
           <label>Category</label>
           <select>
             <option>All</option>
@@ -123,7 +123,7 @@ export default function ProductList() {
             <option>Accessories</option>
           </select>
         </div>
-        <div className="filter-group">
+        <div className="custom-filter-group">
           <label>RAM</label>
           <select>
             <option>All</option>
@@ -132,7 +132,7 @@ export default function ProductList() {
             <option>8 GB</option>
           </select>
         </div>
-        <div className="filter-group">
+        <div className="custom-filter-group">
           <label>ROM</label>
           <select>
             <option>All</option>
@@ -141,22 +141,22 @@ export default function ProductList() {
             <option>256 GB</option>
           </select>
         </div>
-        <button className="apply-filters">Apply Filters</button>
+        <button className="custom-apply-filters">Apply Filters</button>
       </aside>
 
-      <div className="product-main">
-        <h1 className="main-title">Top Deals on Mobile Phones</h1>
+      <div className="custom-product-main">
+        <h1 className="custom-main-title">Top Deals on Mobile Phones</h1>
         {paginatedProducts.map((product) => (
-          <div key={product.id} className="product-wrapper">
+          <div key={product.id} className="custom-product-wrapper">
             <ProductCard product={product} />
           </div>
         ))}
-        <div className="pagination">
+        <div className="custom-pagination">
           {Array.from({ length: totalPages }, (_, i) => (
             <button
               key={i + 1}
               onClick={() => setPage(i + 1)}
-              className={`pagination-btn ${page === i + 1 ? "active" : ""}`}
+              className={`custom-pagination-btn ${page === i + 1 ? "custom-active" : ""}`}
             >
               {i + 1}
             </button>
