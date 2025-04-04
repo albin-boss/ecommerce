@@ -8,19 +8,14 @@ const AboutPage = () => {
         <h1 className="text-center">About Us</h1>
         <hr />
         <p className="lead text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          facere doloremque veritatis odit similique sequi. Odit amet fuga nam
-          quam quasi facilis sed doloremque saepe sint perspiciatis explicabo
-          totam vero quas provident ipsam, veritatis nostrum velit quos
-          recusandae est mollitia esse fugit dolore laudantium. Ex vel explicabo
-          earum unde eligendi autem praesentium, doloremque distinctio nesciunt
-          porro tempore quis eaque labore voluptatibus ea necessitatibus
-          exercitationem tempora molestias. Ad consequuntur veniam sequi ullam
-          tempore vel tenetur soluta dolore sunt maxime aliquam corporis est,
-          quo saepe dolorem optio minus sint nemo totam dolorum! Reprehenderit
-          delectus expedita a alias nam recusandae illo debitis repellat libero,
-          quasi explicabo molestiae saepe, dolorem tempore itaque eveniet quam
-          dignissimos blanditiis excepturi harum numquam vel nihil? Ipsum
+         
+        Welcome to Premium, your one-stop destination for all your shopping needs. We're a team of passionate individuals dedicated to providing you with an unparalleled online shopping experience.
+
+Our mission is to make shopping easy, convenient, and fun for everyone. We strive to offer the best products at competitive prices, ensuring that you get the most value for your money.
+
+At Premium, we're committed to excellence in customer service, product quality, and overall user experience. We believe in building long-term relationships with our customers, and we're always looking for ways to improve and serve you better.
+
+Thank you for choosing Premium. We're excited to have you on board
         </p>
 
         <h2 className="text-center py-4">Our Products</h2>

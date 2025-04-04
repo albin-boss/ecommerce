@@ -47,10 +47,17 @@ const Login = () => {
   };
 
   return (
+<<<<<<< HEAD
+    <GoogleOAuthProvider clientId="186458287471-ukm5cj3kv3f7l4c9158obpc5btmc0874.apps.googleusercontent.com">
+    <div className="login-container">
+      <div className="login-box">
+        <h2 className="login-title">Login</h2>
+=======
     <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
       <div className="login-container">
         <div className="login-box">
           <h2 className="login-title">Welcome Back</h2>
+>>>>>>> 83fa49c857ecaf8a6485d4021ef1e5917270ba23
 
           {error && <p className="error-message">{error}</p>}
 
