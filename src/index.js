@@ -23,7 +23,7 @@ import ProductCard from "./pages/productcard";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import Dashboard from "./admin/dashboard";
-
+import Afterlogin from "./pages/afterlogin";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -43,6 +43,7 @@ root.render(
           <Route path="*" element={<PageNotFound />} />
           <Route path="/product/*" element={<PageNotFound />} />
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/afterlogin" element={<Afterlogin/>}/>
         </Routes>
       </Provider>
     </ScrollToTop>

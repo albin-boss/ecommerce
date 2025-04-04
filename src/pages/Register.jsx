@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import "./register.css";
 
 function Register() {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phoneNumber: "",
     address: "",
     password: "",
-    confirmPassword: "", // Added confirm password field
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -19,29 +21,27 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation: Check if passwords match
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
-    // Simple required fields validation
     if (!formData.name || !formData.email || !formData.phoneNumber || !formData.password) {
       alert("Please fill in all required fields!");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/employees", {
+      await axios.post("http://localhost:8005/api/employees", {
         name: formData.name,
         email: formData.email,
         phoneNumber: formData.phoneNumber,
         address: formData.address,
-        password: formData.password, // Only send password, not confirmPassword
+        password: formData.password,
       });
-      
-      alert("Registration successful!");
-      console.log(response.data);
+
+      alert("Registration successful! Redirecting to login...");
+      navigate("/login"); // Redirect to login page after success
     } catch (error) {
       console.error("Error registering:", error);
       alert("Registration failed!");
