@@ -1,7 +1,53 @@
-import React from 'react';
-import './register.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import axios from "axios";
+import "./register.css";
 
 function Register() {
+  const navigate = useNavigate(); // Initialize useNavigate
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    if (!formData.name || !formData.email || !formData.phoneNumber || !formData.password) {
+      alert("Please fill in all required fields!");
+      return;
+    }
+
+    try {
+      await axios.post("http://localhost:8005/api/employees", {
+        name: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        address: formData.address,
+        password: formData.password,
+      });
+
+      alert("Registration successful! Redirecting to login...");
+      navigate("/login"); // Redirect to login page after success
+    } catch (error) {
+      console.error("Error registering:", error);
+      alert("Registration failed!");
+    }
+  };
+
   return (
     <div className="container-fluid bg-dak">
       <div className="row d-flex justify-content-center align-items-center h-100">
@@ -17,136 +63,103 @@ function Register() {
               </div>
               <div className="col-md-6">
                 <div className="card-body text-black d-flex flex-column justify-content-center">
-                  <h3 className="mb-5 text-uppercase fw-bold">
-                     Registration
-                  </h3>
-                  
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
+                  <h3 className="mb-5 text-uppercase fw-bold">Registration</h3>
+
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
                       <input
                         type="text"
-                        id="form1"
-                        placeholder="First Name"
+                        name="name"
+                        placeholder="Full Name"
                         className="form-control form-control-lg"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
-                    <div className="col-md-6 mb-4">
+
+                    <div className="mb-4">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email ID"
+                        className="form-control form-control-lg"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+
+                    <div className="mb-4">
                       <input
                         type="text"
-                        id="form2"
-                        placeholder="Last Name"
+                        name="phoneNumber"
+                        placeholder="Phone Number"
                         className="form-control form-control-lg"
+                        value={formData.phoneNumber}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
-                  </div>
 
-                  <div className="mb-4">
-                    <input
-                      type="text"
-                      id="form3"
-                      placeholder="Birthday"
-                      className="form-control form-control-lg"
-                    />
-                  </div>
-
-                  <div className="d-md-flex justify-content-start align-items-center mb-4">
-                    <h6 className="fw-bold mb-0 me-4">Gender:</h6>
-                    <div className="form-check form-check-inline">
+                    <div className="mb-4">
                       <input
-                        className="form-check-input"
-                        type="radio"
-                        name="gender"
-                        id="female"
-                        value="female"
+                        type="text"
+                        name="address"
+                        placeholder="Address"
+                        className="form-control form-control-lg"
+                        value={formData.address}
+                        onChange={handleChange}
                       />
-                      <label className="form-check-label" htmlFor="female">
-                        Female
-                      </label>
                     </div>
-                    <div className="form-check form-check-inline">
+
+                    <div className="mb-4">
                       <input
-                        className="form-check-input"
-                        type="radio"
-                        name="gender"
-                        id="male"
-                        value="male"
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        className="form-control form-control-lg"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
                       />
-                      <label className="form-check-label" htmlFor="male">
-                        Male
-                      </label>
                     </div>
-                    <div className="form-check form-check-inline">
+
+                    <div className="mb-4">
                       <input
-                        className="form-check-input"
-                        type="radio"
-                        name="gender"
-                        id="other"
-                        value="other"
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        className="form-control form-control-lg"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        required
                       />
-                      <label className="form-check-label" htmlFor="other">
-                        Other
-                      </label>
                     </div>
-                  </div>
 
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <select className="form-select form-select-lg">
-                        <option defaultValue>State</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                      </select>
+                    <div className="d-flex justify-content-end pt-3">
+                      <button
+                        type="reset"
+                        className="btn btn-light btn-lg"
+                        onClick={() =>
+                          setFormData({
+                            name: "",
+                            email: "",
+                            phoneNumber: "",
+                            address: "",
+                            password: "",
+                            confirmPassword: "",
+                          })
+                        }
+                      >
+                        Reset all
+                      </button>
+                      <button type="submit" className="btn btn-warning btn-lg ms-2">
+                        Submit form
+                      </button>
                     </div>
-                    <div className="col-md-6 mb-4">
-                      <select className="form-select form-select-lg">
-                        <option defaultValue>City</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                      </select>
-                    </div>
-                  </div>
+                  </form>
 
-                  <div className="mb-4">
-                    <input
-                      type="text"
-                      id="form4"
-                      placeholder="Pincode"
-                      className="form-control form-control-lg"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <input
-                      type="text"
-                      id="form5"
-                      placeholder="Address"
-                      className="form-control form-control-lg"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <input
-                      type="int"
-                      id="form5"
-                      placeholder="phone"
-                      className="form-control form-control-lg"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <input
-                      type="text"
-                      id="form6"
-                      placeholder="Email ID"
-                      className="form-control form-control-lg"
-                    />
-                  </div>
-
-                  <div className="d-flex justify-content-end pt-3">
-                    <button className="btn btn-light btn-lg">Reset all</button>
-                    <button className="btn btn-warning btn-lg ms-2">
-                      Submit form
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
