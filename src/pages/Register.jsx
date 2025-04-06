@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./register.css";
+import "./login.css"; // Reuse login.css for consistent styling
 
 function Register() {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,20 +14,25 @@ function Register() {
     confirmPassword: "",
   });
 
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError("");
+    setSuccess("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
+      setError("Passwords do not match!");
       return;
     }
 
     if (!formData.name || !formData.email || !formData.phoneNumber || !formData.password) {
-      alert("Please fill in all required fields!");
+      setError("Please fill in all required fields!");
       return;
     }
 
@@ -40,132 +45,92 @@ function Register() {
         password: formData.password,
       });
 
-      alert("Registration successful! Redirecting to login...");
-      navigate("/login"); // Redirect to login page after success
+      setSuccess("Registration successful! Redirecting to login...");
+      setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
       console.error("Error registering:", error);
-      alert("Registration failed!");
+      setError("Registration failed. Please try again.");
     }
   };
 
   return (
-    <div className="container-fluid bg-dak">
-      <div className="row d-flex justify-content-center align-items-center h-100">
-        <div className="col-12 col-md-8 col-lg-6">
-          <div className="card my-4">
-            <div className="row no-gutters">
-              <div className="col-md-6 d-none d-md-block">
-                <img 
-                  src="https://pbs.twimg.com/ext_tw_video_thumb/1847649102181388288/pu/img/icHTcvUQRLn7rv-W.jpg"
-                  alt="Sample"
-                  className="card-img rounded-start"
-                />
-              </div>
-              <div className="col-md-6">
-                <div className="card-body text-black d-flex flex-column justify-content-center">
-                  <h3 className="mb-5 text-uppercase fw-bold">Registration</h3>
+    <div className="login-container">
+      <div className="login-box">
+        <h2 className="login-title">Sign Up</h2>
 
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Full Name"
-                        className="form-control form-control-lg"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+        {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>}
 
-                    <div className="mb-4">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="Email ID"
-                        className="form-control form-control-lg"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            className="login-input"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
 
-                    <div className="mb-4">
-                      <input
-                        type="text"
-                        name="phoneNumber"
-                        placeholder="Phone Number"
-                        className="form-control form-control-lg"
-                        value={formData.phoneNumber}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="login-input"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
 
-                    <div className="mb-4">
-                      <input
-                        type="text"
-                        name="address"
-                        placeholder="Address"
-                        className="form-control form-control-lg"
-                        value={formData.address}
-                        onChange={handleChange}
-                      />
-                    </div>
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            className="login-input"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            required
+          />
 
-                    <div className="mb-4">
-                      <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        className="form-control form-control-lg"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            className="login-input"
+            value={formData.address}
+            onChange={handleChange}
+          />
 
-                    <div className="mb-4">
-                      <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        className="form-control form-control-lg"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="login-input"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
 
-                    <div className="d-flex justify-content-end pt-3">
-                      <button
-                        type="reset"
-                        className="btn btn-light btn-lg"
-                        onClick={() =>
-                          setFormData({
-                            name: "",
-                            email: "",
-                            phoneNumber: "",
-                            address: "",
-                            password: "",
-                            confirmPassword: "",
-                          })
-                        }
-                      >
-                        Reset all
-                      </button>
-                      <button type="submit" className="btn btn-warning btn-lg ms-2">
-                        Submit form
-                      </button>
-                    </div>
-                  </form>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            className="login-input"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+          />
 
-                </div>
-              </div>
-            </div>
-          </div>
+          <button type="submit" className="login-button">Register</button>
+        </form>
+
+        <div className="login-register">
+          Already have an account?{" "}
+          <a href="#" onClick={() => navigate("/login")} className="login-signup">
+            Login
+          </a>
         </div>
-      </div>      
+      </div>
     </div>
   );
 }

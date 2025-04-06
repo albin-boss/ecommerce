@@ -1,13 +1,21 @@
 /* General Styles */
 body {
   body {
-    background-image: url('https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-5120x2880-8324.png'); /* Update with your actual image path */
+   background-color: #000000;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    
 }
 
+
   }
+
+  .item-link {
+    text-decoration: none;   /* removes underline */
+    color: red;          /* uses the parent text color */
+    display: block;          /* ensures the whole card is clickable */
+  }
+  
   
   /* Header */
   header {
@@ -225,7 +233,6 @@ background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
 }
 
 .item-1 {
-<<<<<<< Updated upstream
   background-image: url("https://cdna.artstation.com/p/assets/images/images/036/002/188/large/m-n-vinit-img-20210322-204116-186.jpg?1616482578");
 }
 
@@ -246,38 +253,6 @@ background: linear-gradient(to right, #ffffff, #766848, #ffffff,#81764f);
 }
 
 
-=======
-  background-image: url("https://i.ytimg.com/vi/aQl32JdQzKE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAEpkf9XdcQVmOSX2sV8K4GVleVOQ");
-}
-
-.item-2 {
-  background-image: url("https://t4.ftcdn.net/jpg/02/07/64/77/360_F_207647709_iapnIP9OVyWufZCc4f89fQVQJ5c2LLKu.jpg");
-}
-
-.item-3 {
-  background-image: url("https://img.freepik.com/premium-vector/shoe-social-media-cover-banner-template-exclusive-collection-sneakers-facebook-cover-photo-design_755018-1873.jpg");
-}
-
-.item-4 {
-  background-image: url("https://media.istockphoto.com/id/1412949747/vector/sale-sticker-with-50-percent-off-weekend-discount.jpg?s=612x612&w=0&k=20&c=xOJuBoLp04OHo4R-w_Ub_jfRIbgJ0N77rWl8SjIBfCI=");
-}
-
-.item-5 {
-  background-image: url("https://www.google.com/imgres?q=4k%20premium%20wallpaper%20shose&imgurl=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2Fimages6%2FFree-download-Cool-Shoe-Wallpaper-HD.jpg&imgrefurl=https%3A%2F%2Fwww.pixelstalk.net%2Fcool-shoe-wallpapers%2F&docid=VQJBYZ8X_PR2gM&tbnid=Re03N9N-pPAEVM&vet=12ahUKEwig6MzM8ImMAxXVe2wGHRzUKV4QM3oECB0QAA..i&w=3840&h=2160&hcb=2&ved=2ahUKEwig6MzM8ImMAxXVe2wGHRzUKV4QM3oECB0QAA");
-}
-
-.item-6 {
-  background-image: url("https://png.pngtree.com/png-clipart/20220430/original/pngtree-special-offer-label-with-discount-png-image_7596828.png");
-}
-
-.item-7 {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQff8UNSMZxtXIxnWr2f1He-BQsE0iMWxa7uA&s");
-}
-
-.item-8 {
-  background-image: url("https://www.transparentpng.com/thumb/special-offer/special-offer-transparent-images--7.png");
-}
->>>>>>> Stashed changes
 .social {
   position: absolute;
   right: 35px;

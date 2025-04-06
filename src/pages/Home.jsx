@@ -190,12 +190,14 @@ const Home = () => {
         <h3 >Top Offers!</h3>
         <div className="grid-container">
           {items.map((item, index) => (
+            <Link to="/login">
             <div key={index} className="item-card">
               <img src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
-              <Link to={item.link}>read more</Link>
+              <Link to="/login">read more</Link>
               <p>{item.price}</p>
             </div>
+            </Link>
           ))}
         </div>
       </section>
