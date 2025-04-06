@@ -180,9 +180,7 @@ const Home = () => {
     <div class="item item-3"></div>
     <div class="item item-4"></div>
     <div class="item item-5"></div>
-    <div class="item item-6"></div>
-    <div class="item item-7"></div>
-    <div class="item item-8"></div>
+   
   </div>
 
       {/* Top Offers */}
@@ -190,11 +188,11 @@ const Home = () => {
         <h3 >Top Offers!</h3>
         <div className="grid-container">
           {items.map((item, index) => (
-            <Link to="/login">
+            <Link to="/login" className="item-link">
             <div key={index} className="item-card">
               <img src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
-              <Link to="/login">read more</Link>
+               read more
               <p>{item.price}</p>
             </div>
             </Link>

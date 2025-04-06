@@ -12,11 +12,15 @@ body {
 
   .item-link {
     text-decoration: none;   /* removes underline */
-    color: red;          /* uses the parent text color */
+    color: #000000;
     display: block;          /* ensures the whole card is clickable */
   }
   
-  
+  .item-link:hover,
+.item-link:focus {
+  text-decoration: none; 
+  color: #000000;/* removes underline on hover/focus too */
+}
   /* Header */
   header {
     background-color:transparent;

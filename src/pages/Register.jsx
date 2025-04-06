@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
 import "./login.css"; // Reuse login.css for consistent styling
 
@@ -55,6 +55,10 @@ function Register() {
 
   return (
     <div className="login-container">
+      <header className="header1">
+              <Link to="/" className="item-link"><h1>PREMIUM</h1></Link>
+                      
+                    </header>
       <div className="login-box">
         <h2 className="login-title">Sign Up</h2>
 
