@@ -1,39 +1,17 @@
 // src/Home.jsx
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaSearch, FaShoppingCart, FaUser, FaCommentDots, FaTimes } from "react-icons/fa";
-import footer from "./Footer";
-import "./home.css";
-import { useNavigate,Link } from "react-router-dom";
 import Footer from "./Footer";
+import "./home.css";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-
-
-const categories = [
-  "Mobiles",
-  "Fashion",
-  "Electronics",
-  "Home & Furniture",
-  "Appliances",
-  "Beauty & More",
-];
-
-const items = [
-  { name: "Running Shoes", price: "₹2,000", image: "https://wallpaperaccess.com/full/5093060.jpg" ,
-    link:"/card",
-  },
-  { name: "Smartphone", price: "₹12,999", image: "https://www.apple.com/v/iphone-16-pro/a/images/meta/iphone-16-pro_specs__dnmdxvp6g7wy_og.png" },
-  { name: "Headphones", price: "₹1,499", image: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697016306/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/300119_9_vl8ja8.png?tr=w-1000" },
-  { name: "Watch", price: "₹999", image: "https://bgr.com/wp-content/uploads/2023/09/Apple-Watch-Series-9.jpg?quality=82&strip=all" },
-  { name: "Backpack", price: "₹799", image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/9739a943-167d-4975-937c-70f6a6837add.__CR0,0,970,600_PT0_SX970_V1___.jpg" },
-];
-
 
 function OffersGrid() {
   const [offersData, setOffersData] = useState([]);
-  const [loading, setLoading] = useState(true); // loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/offers")
+    axios.get("http://localhost:8005/api/offers")
       .then(response => {
         setOffersData(response.data);
         setLoading(false);
@@ -62,7 +40,7 @@ function OffersGrid() {
 
   const imgStyle = {
     width: "100%",
-    height: "auto",
+    height: "200px",
     borderRadius: "4px",
     objectFit: "cover",
     marginBottom: "12px",
@@ -75,18 +53,11 @@ function OffersGrid() {
     color: "#fff",
   };
 
-  const discountStyle = {
+  const priceStyle = {
     margin: 0,
-    color: "#ff5722",
+    color: "#00e676",
     fontWeight: "bold",
     fontSize: "1.1rem",
-  };
-
-  const brandStyle = {
-    display: "block",
-    marginTop: "6px",
-    color: "#ccc",
-    fontSize: "1rem",
   };
 
   return (
@@ -97,11 +68,15 @@ function OffersGrid() {
         <p style={{ color: "#fff", fontSize: "1.2rem" }}>No offers available</p>
       ) : (
         <div style={gridStyle}>
-          {offersData.map((offer, index) => (
-            <div style={cardStyle} key={index}>
-              <img style={imgStyle} src={offer.image} alt={offer.title} />
-              <h3 style={titleStyle}>{offer.title}</h3>
-              <p style={discountStyle}>{offer.discount}</p>
+          {offersData.map((offer) => (
+            <div style={cardStyle} key={offer.id}>
+              <img
+                style={imgStyle}
+                src={offer.image}
+                alt={offer.productName}
+              />
+              <h3 style={titleStyle}>{offer.productName}</h3>
+              <p style={priceStyle}>₹{offer.price}</p>
             </div>
           ))}
         </div>
@@ -109,13 +84,27 @@ function OffersGrid() {
     </div>
   );
 }
+
 const Home = () => {
   const navigate = useNavigate();
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+
+  useEffect(() => {
+    axios.get("http://localhost:8005/api/categories")
+      .then(response => {
+        setCategories(response.data);
+        setLoadingCategories(false);
+      })
+      .catch(error => {
+        console.error("Error fetching categories:", error);
+        setLoadingCategories(false);
+      });
+  }, []);
 
   return (
     <div className="container">
-      {/* Header */}
       <header>
         <h1>PREMIUM</h1>
         <div className="search-box">
@@ -132,46 +121,50 @@ const Home = () => {
         </div>
       </header>
 
-      {/* Categories */}
+      {/* Categories Navigation */}
       <nav>
-        {categories.map((category, index) => (
-          <button key={index}>{category}</button>
-        ))}
+        {loadingCategories ? (
+          <p style={{ color: "#fff" }}>Loading categories...</p>
+        ) : categories.length === 0 ? (
+          <p style={{ color: "#fff" }}>No categories found</p>
+        ) : (
+          categories.map(category => (
+            <button key={category.id}>{category.name}</button>
+          ))
+        )}
       </nav>
 
       {/* Banner */}
-      
-  <div class="gallery-wrap">
-    <div class="item item-1">
-      
-    </div>
-    <div class="item item-2"></div>
-    <div class="item item-3"></div>
-    <div class="item item-4"></div>
-    <div class="item item-5"></div>
-   
-  </div>
+      <div className="gallery-wrap">
+        <div className="item item-1"></div>
+        <div className="item item-2"></div>
+        <div className="item item-3"></div>
+        <div className="item item-4"></div>
+        <div className="item item-5"></div>
+      </div>
 
-      {/* Top Offers */}
+      {/* Categories Section */}
       <section className="offers">
-        <h3 >Top Offers!</h3>
+        <h3>Shop by Category</h3>
         <div className="grid-container">
-          {items.map((item, index) => (
-            <Link to="/login" className="item-link">
-            <div key={index} className="item-card">
-              <img src={item.image} alt={item.name} />
-              <h4>{item.name}</h4>
-               read more
-              <p>{item.price}</p>
-            </div>
-            </Link>
-          ))}
+          {categories.length === 0 ? (
+            <p style={{ color: "#fff" }}>No categories available</p>
+          ) : (
+            categories.map((category) => (
+              <Link to="/login" className="item-link" key={category.id}>
+                <div className="item-card">
+                  <img src={category.image} alt={category.name} />
+                  <h4>{category.name}</h4>
+                </div>
+              </Link>
+            ))
+          )}
         </div>
       </section>
 
-      {/* Today's Offers */}
+      {/* Offers Section */}
       <section className="offers-grid-section">
-        <h3 >Today's Offers</h3>
+        <h3>Today's Offers</h3>
         <OffersGrid />
       </section>
 
@@ -191,7 +184,7 @@ const Home = () => {
         </div>
       )}
 
-<Footer />
+      <Footer />
     </div>
   );
 };
