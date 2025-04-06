@@ -1,10 +1,11 @@
 // src/Home.jsx
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { FaSearch, FaShoppingCart, FaUser, FaCommentDots, FaTimes } from "react-icons/fa";
 import footer from "./Footer";
 import "./home.css";
 import { useNavigate,Link } from "react-router-dom";
 import Footer from "./Footer";
+import axios from "axios";
 
 
 const categories = [
@@ -26,60 +27,22 @@ const items = [
   { name: "Backpack", price: "₹799", image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/9739a943-167d-4975-937c-70f6a6837add.__CR0,0,970,600_PT0_SX970_V1___.jpg" },
 ];
 
+
 function OffersGrid() {
-  
-  const offersData = [
-    {
-      title: "Fitness accessories",
-      discount: "Min. 40% Off",
-      brand: "Boldfit, Prowl & more",
-      image: "https://wallpaperaccess.com/full/2465431.jpg",
-    },
-    {
-      title: "Furnitures",
-      discount: "Up to 70% Off",
-      brand: "chairs, cabinets & more",
-      image: "https://www.housedigest.com/img/gallery/20-ways-to-implement-dark-paint-colors-in-your-home/intro-1659519981.jpg",
-    },
-    {
-      title: "Fashion",
-      discount: "Min. 30% Off",
-      brand: "HK Vitals, OZiva & more",
-      image: "https://dagmaramach.com/wp-content/uploads/2023/08/green-dark-academia-dressy-outfit-ideas-spring-summer.jpeg",
-    },
-    {
-      title: "Beauty",
-      discount: "Up to 15% Off",
-      brand: "Face serums, Foundation & more",
-      image: "https://png.pngtree.com/background/20230528/original/pngtree-makeup-accessories-arranged-on-a-black-background-picture-image_2781512.jpg",
-    },
-    {
-      title: "Dry fruits",
-      discount: "Up to 65% Off",
-      brand: "Dates, Almond, Hazelnuts…",
-      image: "https://img.freepik.com/premium-photo/dry-fruits-image-dark-wooden-surface_1036998-330106.jpg",
-    },
-    {
-      title: "Appliances",
-      discount: "Max. 20% Off",
-      brand: "Refrigerator & more",
-      image: "https://www.brayandscarff.com/_plugins/site-pages/wordpress/wp-content/uploads/2017/07/BlackSS1.jpg",
-     
-    },
-    {
-      title: "Ornaments",
-      discount: "Up to 15% Off",
-      brand: "Pendants & Lockets",
-      image: "https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-pendant-locket/x/w/x/na-na-ethnic-trendy-black-silver-mens-geometric-rectangle-original-imah3ge8574j2n8g.jpeg?q=90&crop=false",
-    },
-    
-    {
-      title: "Kids' Dresses",
-      discount: "60-80% Off",
-      brand: "Miss & Chief, Allen Solly & more",
-      image: "https://content.jdmagicbox.com/quickquotes/images_main/-2elorn68.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit",
-    },
-  ];
+  const [offersData, setOffersData] = useState([]);
+  const [loading, setLoading] = useState(true); // loading state
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/offers")
+      .then(response => {
+        setOffersData(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching offers:", error);
+        setLoading(false);
+      });
+  }, []);
 
   const gridStyle = {
     display: "grid",
@@ -127,19 +90,25 @@ function OffersGrid() {
   };
 
   return (
-    <div style={gridStyle}>
-      {offersData.map((offer, index) => (
-        <div style={cardStyle} key={index}>
-          <img style={imgStyle} src={offer.image} alt={offer.title} />
-          <h3 style={titleStyle}>{offer.title}</h3>
-          <p style={discountStyle}>{offer.discount}</p>
-          <span style={brandStyle}>{offer.brand}</span>
+    <div style={{ padding: "20px" }}>
+      {loading ? (
+        <p style={{ color: "#fff", fontSize: "1.2rem" }}>Loading offers...</p>
+      ) : offersData.length === 0 ? (
+        <p style={{ color: "#fff", fontSize: "1.2rem" }}>No offers available</p>
+      ) : (
+        <div style={gridStyle}>
+          {offersData.map((offer, index) => (
+            <div style={cardStyle} key={index}>
+              <img style={imgStyle} src={offer.image} alt={offer.title} />
+              <h3 style={titleStyle}>{offer.title}</h3>
+              <p style={discountStyle}>{offer.discount}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }
-
 const Home = () => {
   const navigate = useNavigate();
   const [isChatOpen, setIsChatOpen] = useState(false);
