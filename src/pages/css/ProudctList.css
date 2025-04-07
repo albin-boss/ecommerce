@@ -81,7 +81,7 @@ body {
   }
   
   .custom-product-image {
-    width: 160px;
+    width: 360px;
     height: auto;
     border-radius: 10px;
   }
@@ -168,5 +168,21 @@ body {
   
   .custom-pagination-btn.custom-active {
     background-color: #4caf50;
+  }
+  
+  .custom-view-cart-btn {
+    background-color: #ff9800;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-view-cart-btn:hover {
+    background-color: #fb8c00;
   }
   
