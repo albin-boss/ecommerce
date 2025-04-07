@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // 👈 added for navigation
 import "./css/CustomCart.css";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState({});
   const employeeId = localStorage.getItem("employeeId");
+  const navigate = useNavigate(); // 👈 hook to go back
 
   useEffect(() => {
     if (employeeId) {
@@ -65,6 +67,11 @@ export default function Cart() {
   return (
     <div className="custom-dark-cart-page">
       <div className="custom-dark-cart-main">
+        {/* 👇 Back Button */}
+        <button className="custom-dark-back-btn" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
+
         <h1 className="custom-dark-cart-title">Your Cart</h1>
 
         {cartItems.length === 0 ? (
@@ -100,7 +107,12 @@ export default function Cart() {
 
             <div className="custom-dark-total-section">
               <h2>Total Amount: ₹{totalAmount.toFixed(2)}</h2>
-              <button className="custom-dark-checkout-btn">Proceed to Checkout</button>
+              <button
+            className="custom-dark-checkout-btn"
+            onClick={() => navigate("/checkout", { state: { cartItems, products, totalAmount } })}
+          >
+            Proceed to Checkout
+          </button>
             </div>
           </>
         )}

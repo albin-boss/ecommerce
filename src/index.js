@@ -25,6 +25,8 @@ import { Toaster } from "react-hot-toast";
 import Dashboard from "./admin/dashboard";
 import Afterlogin from "./pages/afterlogin";
 import AddProduct from "./admin/AddProduct";
+import OrderDetails from "./pages/OrderDetails";
+import Profile from "./pages/profile";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -46,6 +48,8 @@ root.render(
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/afterlogin" element={<Afterlogin/>}/>
           <Route path="/addproduct" element={<AddProduct/>}/>
+          <Route path="/myorder" element={<OrderDetails/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </Provider>
     </ScrollToTop>
