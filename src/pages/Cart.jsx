@@ -32,11 +32,11 @@ export default function Cart() {
     }
   }, [employeeId]);
 
-  const handleRemove = (productId) => {
+  const handleRemove = (cartId) => {
     axios
-      .delete(`http://localhost:8005/api/cart/${employeeId}/${productId}`)
+      .delete(`http://localhost:8005/api/cart/${cartId}/employee/${employeeId}`)
       .then(() => {
-        setCartItems(cartItems.filter(item => item.productId !== productId));
+        setCartItems(cartItems.filter(item => item.id !== cartId));
       })
       .catch((err) => console.error("Error removing item:", err));
   };
@@ -89,7 +89,7 @@ export default function Cart() {
                     </div>
                     <button
                       className="custom-dark-cart-remove"
-                      onClick={() => handleRemove(productId)}
+                      onClick={() => handleRemove(id)}
                     >
                       Remove
                     </button>
