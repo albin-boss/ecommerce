@@ -118,6 +118,9 @@ const Home = () => {
           <button className="button" onClick={() => navigate("/cart")}>
             <FaShoppingCart /> Cart
           </button>
+          <button className="button" onClick={() => navigate("/Profile")}>
+            <FaUser /> My Profile
+          </button>
         </div>
       </header>
 
