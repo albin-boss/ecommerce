@@ -84,7 +84,6 @@ const Login = () => {
   };
 
   return (
-<<<<<<< Updated upstream
     <GoogleOAuthProvider clientId="186458287471-ukm5cj3kv3f7l4c9158obpc5btmc0874.apps.googleusercontent.com">
       <div className="login-container">
         <header className="header1">
@@ -95,12 +94,6 @@ const Login = () => {
 
         <div className="login-box">
           <h2 className="login-title">Login</h2>
-=======
-    <GoogleOAuthProvider clientId="">
-    <div className="login-container">
-      <div className="login-box">
-        <h2 className="login-title">Login</h2>
->>>>>>> Stashed changes
 
           {error && <p className="error-message">{error}</p>}
 
