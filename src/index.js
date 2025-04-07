@@ -27,6 +27,7 @@ import Afterlogin from "./pages/afterlogin";
 import AddProduct from "./admin/AddProduct";
 import OrderDetails from "./pages/OrderDetails";
 import Profile from "./pages/profile";
+import GiftCard from "./pages/GiftCard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -50,6 +51,7 @@ root.render(
           <Route path="/addproduct" element={<AddProduct/>}/>
           <Route path="/myorder" element={<OrderDetails/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/giftcard" element={<GiftCard/>}/>
         </Routes>
       </Provider>
     </ScrollToTop>

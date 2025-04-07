@@ -176,4 +176,22 @@ body, .custom-profile-container {
   .custom-faq-link:hover {
     text-decoration: underline;
   }
+  .custom-back-button-container {
+    padding: 1rem;
+  }
+  
+  .custom-back-button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .custom-back-button:hover {
+    background-color: #666;
+  }
   

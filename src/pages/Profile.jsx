@@ -17,7 +17,7 @@ export default function ProfileInfo() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/employees/${employeeId}`);
+        const response = await axios.get(`http://localhost:8005/api/employees/${employeeId}`);
         const { name, email, phoneNumber } = response.data;
         const nameParts = name.split(' ');
         setFirstName(nameParts[0]);
@@ -39,7 +39,7 @@ export default function ProfileInfo() {
         email,
         phoneNumber: mobile
       };
-      await axios.put(`http://localhost:8080/api/employees/${employeeId}`, updatedData);
+      await axios.put(`http://localhost:8005/api/employees/${employeeId}`, updatedData);
       console.log("Profile updated successfully");
     } catch (error) {
       console.error("Failed to update profile:", error);
@@ -48,30 +48,31 @@ export default function ProfileInfo() {
 
   return (
     <div className="custom-profile-container">
+      <div className="custom-back-button-container">
+        <button className="custom-back-button" onClick={() => navigate(-1)}>← Back</button>
+      </div>
+
       <aside className="custom-sidebar">
         <h2 className="custom-sidebar-title">Account Settings</h2>
         <div className="custom-sidebar-section">
           <button className="custom-sidebar-button active" onClick={() => navigate('/profile')}>Profile Information</button>
           <button className="custom-sidebar-button" onClick={() => navigate('/addresses')}>Manage Addresses</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/pan-card')}>PAN Card Information</button>
         </div>
 
         <div className="custom-sidebar-subsection">
           <h2 className="custom-sidebar-subtitle">PAYMENTS</h2>
-          <button className="custom-sidebar-button" onClick={() => navigate('/gift-cards')}>Gift Cards <span className="custom-highlight-green">₹0</span></button>
+          <button className="custom-sidebar-button" onClick={() => navigate('/giftcard')}>Gift Cards <span className="custom-highlight-green">₹0</span></button>
           <button className="custom-sidebar-button" onClick={() => navigate('/saved-upi')}>Saved UPI</button>
           <button className="custom-sidebar-button" onClick={() => navigate('/saved-cards')}>Saved Cards</button>
         </div>
 
         <h2 className="custom-sidebar-title">My Stuff</h2>
         <div className="custom-sidebar-section">
-          <button className="custom-sidebar-button" onClick={() => navigate('/coupons')}>My Coupons</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/reviews')}>My Reviews & Ratings</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/notifications')}>All Notifications</button>
+          <button className="custom-sidebar-button" onClick={() => navigate('/myorder')}>My orders</button>
           <button className="custom-sidebar-button" onClick={() => navigate('/wishlist')}>My Wishlist</button>
         </div>
 
-        <button className="custom-sidebar-button custom-logout-button" onClick={() => navigate('/logout')}>Logout</button>
+        <button className="custom-sidebar-button custom-logout-button" onClick={() => navigate('/login')}>Logout</button>
       </aside>
 
       <div className="custom-main-content">
@@ -164,7 +165,6 @@ export default function ProfileInfo() {
           </div>
 
           <div className="custom-faq-links">
-            <a href="#" className="custom-faq-link">Deactivate Account</a>
             <a href="#" className="custom-faq-link custom-delete">Delete Account</a>
           </div>
         </div>
