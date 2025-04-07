@@ -79,7 +79,7 @@ function Allproduct() {
               <p>${product.price}</p>
 
               <div className="card-buttons">
-                <button onClick={() => navigate(`/products/${product.id}`)}>View</button>
+                <button onClick={() => navigate(`/update-product/${product.id}`)}>View</button>
                 <button onClick={() => navigate(`/update-product/${product.id}`)}>Update</button>
 
 
