@@ -24,6 +24,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import Dashboard from "./admin/dashboard";
 import Afterlogin from "./pages/afterlogin";
+import AddProduct from "./admin/AddProduct";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -44,6 +45,7 @@ root.render(
           <Route path="/productlist" element={<ProductList />} />
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/afterlogin" element={<Afterlogin/>}/>
+          <Route path="/addproduct" element={<AddProduct/>}/>
         </Routes>
       </Provider>
     </ScrollToTop>

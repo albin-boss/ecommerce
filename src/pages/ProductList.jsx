@@ -1,102 +1,21 @@
-import React, { useState } from "react";
-import "./css/ProudctList.css"; // Custom CSS file
-
-const allProducts = [
-  {
-    id: 1,
-    name: "vivo T4x 5G (Pronto Purple, 128 GB)",
-    price: 14999,
-    originalPrice: 19499,
-    discount: "23% off",
-    rating: 4.5,
-    reviews: 873,
-    customerReview: "Amazing performance and battery life!",
-    features: [
-      "8 GB RAM | 128 GB ROM",
-      "6.72 inch Display",
-      "50MP + 2MP | 8MP Front Camera",
-      "6500 mAh Battery",
-      "Dimensity 7300 5G Processor",
-    ],
-    category: "Smartphones",
-    ram: "8 GB",
-    rom: "128 GB",
-    discountPercentage: 23,
-    image: "/vivo-t4x.png",
-  },
-  {
-    id: 2,
-    name: "MOTOROLA g35 5G (Guava Red, 128 GB)",
-    price: 9999,
-    originalPrice: 12499,
-    discount: "20% off",
-    rating: 4.2,
-    reviews: 2636,
-    customerReview: "Great value for the price!",
-    features: [
-      "4 GB RAM | 128 GB ROM | Expandable Upto 1 TB",
-      "6.72 inch Full HD+ Display",
-      "50MP + 8MP | 16MP Front Camera",
-      "5000 mAh Battery",
-      "T760 Processor",
-    ],
-    category: "Smartphones",
-    ram: "4 GB",
-    rom: "128 GB",
-    discountPercentage: 20,
-    image: "/moto-g35.png",
-  },
-  {
-    id: 3,
-    name: "Samsung Galaxy M14 5G (Berry Blue, 128 GB)",
-    price: 13499,
-    originalPrice: 16499,
-    discount: "18% off",
-    rating: 4.4,
-    reviews: 1574,
-    customerReview: "Solid phone with great battery and performance.",
-    features: [
-      "6 GB RAM | 128 GB ROM",
-      "6.6 inch PLS LCD Display",
-      "50MP + 2MP + 2MP | 13MP Front Camera",
-      "6000 mAh Battery",
-      "Exynos 1330 Processor",
-    ],
-    category: "Smartphones",
-    ram: "6 GB",
-    rom: "128 GB",
-    discountPercentage: 18,
-    image: "/samsung-m14.png",
-  }
-];
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./css/ProudctList.css";
 
 const ITEMS_PER_PAGE = 5;
 
 const ProductCard = ({ product }) => {
   return (
     <div className="custom-product-card">
-      <img src={product.image} alt={product.name} className="custom-product-image" />
+      <img src={product.image1} alt={product.name} className="custom-product-image" />
       <div className="custom-product-details">
         <h2 className="custom-product-name">{product.name}</h2>
         <div className="custom-product-rating">
           <span className="custom-rating-value">⭐ {product.rating}</span>
-          <span className="custom-rating-reviews">({product.reviews} Reviews)</span>
         </div>
-        <p className="custom-product-review">"{product.customerReview}"</p>
-        <ul className="custom-product-features">
-          {product.features.map((feature, index) => (
-            <li key={index}>• {feature}</li>
-          ))}
-        </ul>
-        <div className="custom-product-price">
-          <span className="custom-current-price">₹{product.price}</span>
-          <span className="custom-original-price">₹{product.originalPrice}</span>
-          <span className="custom-discount">{product.discount}</span>
-        </div>
+        <p className="custom-product-review">"{product.description}"</p>
+        <p className="custom-product-meta">₹{product.price}</p>
         <p className="custom-product-meta">Category: {product.category}</p>
-        <p className="custom-product-meta">RAM: {product.ram}</p>
-        <p className="custom-product-meta">ROM: {product.rom}</p>
-        <p className="custom-product-meta">Discount: {product.discountPercentage}%</p>
         <button className="custom-add-to-cart">Add to Cart</button>
       </div>
     </div>
@@ -104,44 +23,76 @@ const ProductCard = ({ product }) => {
 };
 
 export default function ProductList() {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [sortType, setSortType] = useState("");
   const [page, setPage] = useState(1);
 
-  const totalPages = Math.ceil(allProducts.length / ITEMS_PER_PAGE);
+  useEffect(() => {
+    axios.get("http://localhost:8005/api/products")
+      .then(res => setProducts(res.data))
+      .catch(err => console.error("Error fetching products:", err));
+
+    axios.get("http://localhost:8005/api/categories")
+      .then(res => setCategories(res.data))
+      .catch(err => console.error("Error fetching categories:", err));
+  }, []);
+
+  const applyFilters = () => {
+    let filtered = [...products];
+
+    if (categoryFilter !== "All") {
+      filtered = filtered.filter(p => p.category === categoryFilter);
+    }
+
+    if (sortType === "priceLowHigh") {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sortType === "priceHighLow") {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (sortType === "ratingHighLow") {
+      filtered.sort((a, b) => b.rating - a.rating);
+    }
+
+    return filtered;
+  };
+
+  const filteredProducts = applyFilters();
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const paginatedProducts = allProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <div className="custom-product-page">
       <aside className="custom-sidebar">
         <h2 className="custom-sidebar-title">Filters</h2>
+
         <div className="custom-filter-group">
           <label>Category</label>
-          <select>
-            <option>All</option>
-            <option>Smartphones</option>
-            <option>Tablets</option>
-            <option>Accessories</option>
+          <select value={categoryFilter} onChange={(e) => { setCategoryFilter(e.target.value); setPage(1); }}>
+            <option value="All">All</option>
+            {categories.map((cat, index) => (
+              <option key={index} value={cat.name}>{cat.name}</option>
+            ))}
           </select>
         </div>
+
         <div className="custom-filter-group">
-          <label>RAM</label>
-          <select>
-            <option>All</option>
-            <option>4 GB</option>
-            <option>6 GB</option>
-            <option>8 GB</option>
+          <label>Sort By Price</label>
+          <select value={sortType} onChange={(e) => { setSortType(e.target.value); setPage(1); }}>
+            <option value="">None</option>
+            <option value="priceLowHigh">Low to High</option>
+            <option value="priceHighLow">High to Low</option>
           </select>
         </div>
+
         <div className="custom-filter-group">
-          <label>ROM</label>
-          <select>
-            <option>All</option>
-            <option>64 GB</option>
-            <option>128 GB</option>
-            <option>256 GB</option>
+          <label>Sort By Rating</label>
+          <select value={sortType} onChange={(e) => { setSortType(e.target.value); setPage(1); }}>
+            <option value="">None</option>
+            <option value="ratingHighLow">High to Low</option>
           </select>
         </div>
-        <button className="custom-apply-filters">Apply Filters</button>
       </aside>
 
       <div className="custom-product-main">
