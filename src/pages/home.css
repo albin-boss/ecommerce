@@ -1,14 +1,26 @@
 /* General Styles */
 body {
   body {
-    background-image: url('https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-5120x2880-8324.png'); /* Update with your actual image path */
+   background-color: #000000;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    
 }
 
+
+  }
+
+  .item-link {
+    text-decoration: none;   /* removes underline */
+    color: #000000;
+    display: block;          /* ensures the whole card is clickable */
   }
   
+  .item-link:hover,
+.item-link:focus {
+  text-decoration: none; 
+  color: #000000;/* removes underline on hover/focus too */
+}
   /* Header */
   header {
     background-color:transparent;
