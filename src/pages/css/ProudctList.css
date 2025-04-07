@@ -247,6 +247,10 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+.custom-product-card {
+  cursor: pointer;
+}
+
 .custom-product-card.list .custom-product-image {
   width: 420px;
   height: auto;

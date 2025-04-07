@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import "./css/ProudctList.css";
 
@@ -10,27 +11,28 @@ function useQuery() {
 }
 
 const ProductCard = ({ product, handleAddToCart, handleWishlistToggle, isWishlisted, view }) => {
+  const navigate = useNavigate(); 
   return (
-    <div className={`custom-product-card ${view}`}>
-      <img src={product.image1} alt={product.name} className="custom-product-image" />
-      <div className="custom-product-details">
-        <h2 className="custom-product-name">{product.name}</h2>
-        <div className="custom-product-rating">
-          <span className="custom-rating-value">⭐ {product.rating}</span>
-        </div>
-        <p className="custom-product-review">"{product.description}"</p>
-        <p className="custom-product-meta">₹{product.price}</p>
-        <p className="custom-product-meta">Category: {product.category}</p>
-        <div className="custom-product-actions">
-          <button className="custom-add-to-cart" onClick={() => handleAddToCart(product.id)}>
-            Add to Cart
-          </button>
-          <button className="custom-wishlist-btn" onClick={() => handleWishlistToggle(product.id)}>
-            {isWishlisted ? "💔 Remove" : "💖 Wishlist"}
-          </button>
-        </div>
+    <div className={`custom-product-card ${view}`} onClick={() => navigate(`/product/${product.id}`)}>
+    <img src={product.image1} alt={product.name} className="custom-product-image" />
+    <div className="custom-product-details">
+      <h2 className="custom-product-name">{product.name}</h2>
+      <div className="custom-product-rating">
+        <span className="custom-rating-value">⭐ {product.rating}</span>
+      </div>
+      <p className="custom-product-review">"{product.description}"</p>
+      <p className="custom-product-meta">₹{product.price}</p>
+      <p className="custom-product-meta">Category: {product.category}</p>
+      <div className="custom-product-actions" onClick={(e) => e.stopPropagation()}>
+        <button className="custom-add-to-cart" onClick={() => handleAddToCart(product.id)}>
+          Add to Cart
+        </button>
+        <button className="custom-wishlist-btn" onClick={() => handleWishlistToggle(product.id)}>
+          {isWishlisted ? "💔 Remove" : "💖 Wishlist"}
+        </button>
       </div>
     </div>
+  </div>
   );
 };
 

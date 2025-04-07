@@ -1,105 +1,160 @@
-import { useState } from "react";
-import { FaBars, FaMoon, FaSun } from "react-icons/fa";
-import "./css/Dashboard.css";
+import React, { useState } from 'react';
+import ReactApexChart from 'react-apexcharts';
+import './css/Dashboard.css'; // 👈 Custom CSS file
 
-const salesData = [
-  { name: "Jan", sales: 30 },
-  { name: "Feb", sales: 45 },
-  { name: "Mar", sales: 60 },
-  { name: "Apr", sales: 80 },
-  { name: "May", sales: 75 },
-  { name: "Jun", sales: 95 },
-];
+function Dashboard() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-const topProducts = [
-  { name: "phones-", sales: 500 },
-  { name: "dress-", sales: 450 },
-  { name: "watches-", sales: 400 },
-  { name: "makeup-", sales: 350 },
-  { name: "dry fruits-", sales: 300 },
-];
+  const barChartOptions = {
+    series: [
+      {
+        data: [10, 8, 6, 4, 2],
+        name: 'Products',
+      },
+    ],
+    chart: {
+      type: 'bar',
+      background: 'transparent',
+      toolbar: { show: false },
+    },
+    colors: ['#2962ff', '#d50000', '#2e7d32', '#ff6d00', '#583cb3'],
+    plotOptions: {
+      bar: {
+        distributed: true,
+        borderRadius: 4,
+        horizontal: false,
+        columnWidth: '40%',
+      },
+    },
+    dataLabels: { enabled: false },
+    fill: { opacity: 1 },
+    grid: {
+      borderColor: '#55596e',
+      yaxis: { lines: { show: true } },
+      xaxis: { lines: { show: true } },
+    },
+    legend: {
+      labels: { colors: '#f5f7ff' },
+      show: true,
+      position: 'top',
+    },
+    stroke: {
+      colors: ['transparent'],
+      show: true,
+      width: 2,
+    },
+    tooltip: {
+      shared: true,
+      intersect: false,
+      theme: 'dark',
+    },
+    xaxis: {
+      categories: ['Laptop', 'Phone', 'Monitor', 'Headphones', 'Camera'],
+      title: { style: { color: '#f5f7ff' } },
+      axisBorder: { show: true, color: '#55596e' },
+      axisTicks: { show: true, color: '#55596e' },
+      labels: { style: { colors: '#f5f7ff' } },
+    },
+    yaxis: {
+      title: { text: 'Count', style: { color: '#f5f7ff' } },
+      axisBorder: { show: true, color: '#55596e' },
+      axisTicks: { show: true, color: '#55596e' },
+      labels: { style: { colors: '#f5f7ff' } },
+    },
+  };
 
-const premiumCustomers = [
-  { name: "John Doe", spending: "$1200" },
-  { name: "Jane Smith", spending: "$1100" },
-  { name: "Alice Johnson", spending: "$1050" },
-  { name: "Robert Brown", spending: "$980" },
-  { name: "Emily Davis", spending: "$950" },
-];
-
-export default function Dashboard() {
-  const [totalSales] = useState(40000);
-  const [totalRevenue] = useState(90900);
-  const [totalVisits] = useState(35000);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
+  const areaChartOptions = {
+    series: [
+      { name: 'Purchase Orders', data: [31, 40, 28, 51, 42, 109, 100] },
+      { name: 'Sales Orders', data: [11, 32, 45, 32, 34, 52, 41] },
+    ],
+    chart: {
+      type: 'area',
+      background: 'transparent',
+      stacked: false,
+      toolbar: { show: false },
+    },
+    colors: ['#00ab57', '#d50000'],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+    dataLabels: { enabled: false },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        opacityFrom: 0.4,
+        opacityTo: 0.1,
+        shadeIntensity: 1,
+        stops: [0, 100],
+        type: 'vertical',
+      },
+    },
+    grid: {
+      borderColor: '#55596e',
+      yaxis: { lines: { show: true } },
+      xaxis: { lines: { show: true } },
+    },
+    legend: {
+      labels: { colors: '#f5f7ff' },
+      show: true,
+      position: 'top',
+    },
+    markers: {
+      size: 6,
+      strokeColors: '#1b2635',
+      strokeWidth: 3,
+    },
+    stroke: { curve: 'smooth' },
+    xaxis: {
+      axisBorder: { show: true, color: '#55596e' },
+      axisTicks: { show: true, color: '#55596e' },
+      labels: { offsetY: 5, style: { colors: '#f5f7ff' } },
+    },
+    yaxis: [
+      {
+        title: { text: 'Purchase Orders', style: { color: '#f5f7ff' } },
+        labels: { style: { colors: ['#f5f7ff'] } },
+      },
+      {
+        opposite: true,
+        title: { text: 'Sales Orders', style: { color: '#f5f7ff' } },
+        labels: { style: { colors: ['#f5f7ff'] } },
+      },
+    ],
+    tooltip: {
+      shared: true,
+      intersect: false,
+      theme: 'dark',
+    },
+  };
 
   return (
-    <div className={`dashboard-container ${darkMode ? 'dashboard-dark' : 'dashboard-light'}`}>
-      {/* Top Navigation Bar */}
-      <div className="dashboard-navbar">
-        <button onClick={() => setSidebarOpen(!sidebarOpen)} className="dashboard-menu-button">
-          <FaBars size={24} className="dashboard-menu-icon" />
-        </button>
-        <button onClick={() => setDarkMode(!darkMode)} className="dashboard-theme-toggle">
-          {darkMode ? <FaSun size={20} className="dashboard-light-icon" /> : <FaMoon size={20} className="dashboard-dark-icon" />}
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </button>
+    <div className="dashboard-container">
+      <button onClick={() => setSidebarOpen(true)}>Open Sidebar</button>
+      <button onClick={() => setSidebarOpen(false)}>Close Sidebar</button>
+
+      <div id="sidebar" className={sidebarOpen ? 'sidebar sidebar-open' : 'sidebar'}>
+        {/* Sidebar content */}
       </div>
 
-      <div className="dashboard-layout">
-        {/* Sidebar Navigation */}
-        <aside className={`dashboard-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-          <ul className="dashboard-nav-list">
-            <li>Dashboard</li>
-            <li>Email</li>
-            <li>users</li>
-            <li>add product</li>
-            <li>products</li>
-            <li>Reports</li>
-            <li>Settings</li>
-          </ul>
-        </aside>
-        
-        {/* Main Dashboard Content */}
-        <div className="dashboard-content">
-          {/* Overview Cards */}
-          <div className="dashboard-cards">
-            {["Total Sales", "Total Revenue", "Total Visits"].map((title, i) => (
-              <div key={i} className="dashboard-card">
-                <h2>{title}</h2>
-                <p>{[totalSales, totalRevenue, totalVisits][i]}</p>
-              </div>
-            ))}
-          </div>
-          
-          {/* Sales Chart */}
-          <div className="dashboard-chart">
-            <h2>Sales Overview</h2>
-            <div className="dashboard-chart-placeholder">Graph will be here</div>
-          </div>
-          
-          {/* Product and Customer Lists */}
-          <div className="dashboard-lists">
-            {["Top Selling Products", "Premium Customers"].map((title, i) => (
-              <div key={i} className="dashboard-list-card">
-                <h2>{title}</h2>
-                <ul>
-                  {(i === 0 ? topProducts : premiumCustomers).map((item, index) => (
-                    <li key={index} className="dashboard-list-item">
-                      <span>{item.name}</span>
-                      <span>{i === 0 ? `${item.sales} sales` : item.spending}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+      <div className="chart-section">
+        <div className="chart-box">
+          <ReactApexChart
+            options={barChartOptions}
+            series={barChartOptions.series}
+            type="bar"
+            height={350}
+          />
+        </div>
+        <div className="chart-box">
+          <ReactApexChart
+            options={areaChartOptions}
+            series={areaChartOptions.series}
+            type="area"
+            height={350}
+          />
         </div>
       </div>
-      
-      {/* Footer Section */}
-     
     </div>
   );
 }
+
+export default Dashboard;
