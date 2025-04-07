@@ -1,174 +1,204 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './css/CustomProfile.css';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBBtn,
+  MDBBreadcrumb,
+  MDBBreadcrumbItem,
+  MDBProgress,
+  MDBProgressBar,
+  MDBIcon,
+  MDBListGroup,
+  MDBListGroupItem
+} from 'mdb-react-ui-kit';
 
-export default function ProfileInfo() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [editingEmail, setEditingEmail] = useState(false);
-  const [editingMobile, setEditingMobile] = useState(false);
-
-  const employeeId = localStorage.getItem("employeeId");
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/employees/${employeeId}`);
-        const { name, email, phoneNumber } = response.data;
-        const nameParts = name.split(' ');
-        setFirstName(nameParts[0]);
-        setLastName(nameParts[1] || '');
-        setEmail(email);
-        setMobile(phoneNumber);
-      } catch (error) {
-        console.error("Failed to fetch profile info:", error);
-      }
-    };
-
-    fetchProfile();
-  }, [employeeId]);
-
-  const updateProfile = async () => {
-    try {
-      const updatedData = {
-        name: `${firstName} ${lastName}`,
-        email,
-        phoneNumber: mobile
-      };
-      await axios.put(`http://localhost:8080/api/employees/${employeeId}`, updatedData);
-      console.log("Profile updated successfully");
-    } catch (error) {
-      console.error("Failed to update profile:", error);
-    }
-  };
-
+export default function ProfilePage() {
   return (
-    <div className="custom-profile-container">
-      <aside className="custom-sidebar">
-        <h2 className="custom-sidebar-title">Account Settings</h2>
-        <div className="custom-sidebar-section">
-          <button className="custom-sidebar-button active" onClick={() => navigate('/profile')}>Profile Information</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/addresses')}>Manage Addresses</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/pan-card')}>PAN Card Information</button>
-        </div>
+    <section style={{ backgroundColor: '#eee' }}>
+      <MDBContainer className="py-5">
+        <MDBRow>
+          <MDBCol>
+            <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
+              <MDBBreadcrumbItem>
+                <a href='#'>Home</a>
+              </MDBBreadcrumbItem>
+              <MDBBreadcrumbItem>
+                <a href="#">User</a>
+              </MDBBreadcrumbItem>
+              <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
+            </MDBBreadcrumb>
+          </MDBCol>
+        </MDBRow>
 
-        <div className="custom-sidebar-subsection">
-          <h2 className="custom-sidebar-subtitle">PAYMENTS</h2>
-          <button className="custom-sidebar-button" onClick={() => navigate('/gift-cards')}>Gift Cards <span className="custom-highlight-green">₹0</span></button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/saved-upi')}>Saved UPI</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/saved-cards')}>Saved Cards</button>
-        </div>
+        <MDBRow>
+          <MDBCol lg="4">
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <MDBCardImage
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  alt="avatar"
+                  className="rounded-circle"
+                  style={{ width: '150px' }}
+                  fluid />
+                <p className="text-muted mb-1">Full Stack Developer</p>
+                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <MDBBtn>Follow</MDBBtn>
+                  <MDBBtn outline className="ms-1">Message</MDBBtn>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
 
-        <h2 className="custom-sidebar-title">My Stuff</h2>
-        <div className="custom-sidebar-section">
-          <button className="custom-sidebar-button" onClick={() => navigate('/coupons')}>My Coupons</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/reviews')}>My Reviews & Ratings</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/notifications')}>All Notifications</button>
-          <button className="custom-sidebar-button" onClick={() => navigate('/wishlist')}>My Wishlist</button>
-        </div>
+            <MDBCard className="mb-4 mb-lg-0">
+              <MDBCardBody className="p-0">
+                <MDBListGroup flush className="rounded-3">
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fas icon="globe fa-lg text-warning" />
+                    <MDBCardText>https://mdbootstrap.com</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
+                    <MDBCardText>mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="twitter fa-lg" style={{ color: '#55acee' }} />
+                    <MDBCardText>@mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="instagram fa-lg" style={{ color: '#ac2bac' }} />
+                    <MDBCardText>mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="facebook fa-lg" style={{ color: '#3b5998' }} />
+                    <MDBCardText>mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                </MDBListGroup>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol lg="8">
+            <MDBCard className="mb-4">
+              <MDBCardBody>
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Full Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Email</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Phone</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Mobile</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Address</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+              </MDBCardBody>
+            </MDBCard>
 
-        <button className="custom-sidebar-button custom-logout-button" onClick={() => navigate('/logout')}>Logout</button>
-      </aside>
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBCard className="mb-4 mb-md-0">
+                  <MDBCardBody>
+                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
+                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
+                    </MDBProgress>
 
-      <div className="custom-main-content">
-        <div className="custom-main-header">
-          <h1 className="custom-main-title">Personal Information</h1>
-        </div>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
+                    </MDBProgress>
 
-        <div className="custom-info-card">
-          <div className="custom-info-row">
-            <div className="custom-info-group">
-              <label className="custom-info-label">First Name</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className="custom-info-input"
-              />
-            </div>
-            <div className="custom-info-group">
-              <label className="custom-info-label">Last Name</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                className="custom-info-input"
-              />
-            </div>
-          </div>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
+                    </MDBProgress>
 
-          <div className="custom-info-group">
-            <label className="custom-info-label">Email Address</label>
-            {editingEmail ? (
-              <div className="custom-info-editing">
-                <input
-                  type="email"
-                  className="custom-info-input"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <button onClick={() => { setEditingEmail(false); updateProfile(); }} className="custom-edit-button">Save</button>
-              </div>
-            ) : (
-              <div className="custom-info-display">
-                <span>{email}</span>
-                <button onClick={() => setEditingEmail(true)} className="custom-edit-button">Edit</button>
-              </div>
-            )}
-          </div>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
+                    </MDBProgress>
 
-          <div className="custom-info-group">
-            <label className="custom-info-label">Mobile Number</label>
-            {editingMobile ? (
-              <div className="custom-info-editing">
-                <input
-                  type="tel"
-                  className="custom-info-input"
-                  value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
-                />
-                <button onClick={() => { setEditingMobile(false); updateProfile(); }} className="custom-edit-button">Save</button>
-              </div>
-            ) : (
-              <div className="custom-info-display">
-                <span>{mobile || 'Not Provided'}</span>
-                <button onClick={() => setEditingMobile(true)} className="custom-edit-button">Edit</button>
-              </div>
-            )}
-          </div>
-        </div>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
+                    </MDBProgress>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
 
-        <div className="custom-info-card custom-faq-section">
-          <h2 className="custom-faq-title">FAQs</h2>
-          <div className="custom-faq-list">
-            <div>
-              <strong>What happens when I update my email address (or mobile number)?</strong>
-              <p>Your login email ID (or mobile number) changes. You'll receive all your account-related communication on your updated email or mobile number.</p>
-            </div>
-            <div>
-              <strong>When will my account be updated with the new email address (or mobile number)?</strong>
-              <p>As soon as you confirm the verification code sent to your email (or mobile) and save the changes.</p>
-            </div>
-            <div>
-              <strong>What happens to my existing account when I update my email address (or mobile number)?</strong>
-              <p>Your account remains fully functional. You'll continue seeing your order history, saved info, and personal details.</p>
-            </div>
-            <div>
-              <strong>Does my seller account get affected when I update my email address?</strong>
-              <p>If you use one, yes. It’ll reflect there too as part of single sign-on.</p>
-            </div>
-          </div>
+              <MDBCol md="6">
+                <MDBCard className="mb-4 mb-md-0">
+                  <MDBCardBody>
+                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
+                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
+                    </MDBProgress>
 
-          <div className="custom-faq-links">
-            <a href="#" className="custom-faq-link">Deactivate Account</a>
-            <a href="#" className="custom-faq-link custom-delete">Delete Account</a>
-          </div>
-        </div>
-      </div>
-    </div>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
+                    </MDBProgress>
+
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
+                    </MDBProgress>
+
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
+                    </MDBProgress>
+
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
+                    <MDBProgress className="rounded">
+                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
+                    </MDBProgress>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+            </MDBRow>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </section>
   );
 }
