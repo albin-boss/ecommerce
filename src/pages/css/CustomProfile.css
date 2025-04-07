@@ -1,0 +1,179 @@
+/* CustomProfile.css */
+
+/* Overall dark background */
+body, .custom-profile-container {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .custom-profile-container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  /* Sidebar styling */
+  .custom-sidebar {
+    width: 250px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .custom-sidebar-title,
+  .custom-sidebar-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: #ffffff;
+  }
+  
+  .custom-sidebar-section,
+  .custom-sidebar-subsection {
+    margin-bottom: 20px;
+  }
+  
+  .custom-sidebar-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .custom-sidebar-button:hover {
+    background-color: #333;
+    transform: translateX(5px);
+  }
+  
+  .custom-sidebar-button.active {
+    background-color: #444;
+  }
+  
+  .custom-highlight-green {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .custom-logout-button {
+    background-color: #c62828;
+    color: white;
+  }
+  
+  .custom-logout-button:hover {
+    background-color: #b71c1c;
+  }
+  
+  /* Main content area */
+  .custom-main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .custom-main-header {
+    margin-bottom: 20px;
+  }
+  
+  .custom-main-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Info card styling */
+  .custom-info-card {
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .custom-info-row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .custom-info-group {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  
+  .custom-info-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .custom-info-input {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  .custom-info-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c2c2c;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .custom-info-editing {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .custom-edit-button {
+    padding: 8px 12px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .custom-edit-button:hover {
+    background-color: #005fa3;
+  }
+  
+  /* FAQ section */
+  .custom-faq-section {
+    background-color: #1f1f1f;
+  }
+  
+  .custom-faq-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .custom-faq-list > div {
+    margin-bottom: 15px;
+  }
+  
+  .custom-faq-link {
+    display: inline-block;
+    margin-right: 20px;
+    color: #2196f3;
+    text-decoration: none;
+  }
+  
+  .custom-faq-link.custom-delete {
+    color: #e53935;
+  }
+  
+  .custom-faq-link:hover {
+    text-decoration: underline;
+  }
+  

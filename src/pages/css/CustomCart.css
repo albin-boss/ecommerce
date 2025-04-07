@@ -97,3 +97,19 @@
     cursor: pointer;
   }
   
+  .custom-dark-back-btn {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+  }
+  
+  .custom-dark-back-btn:hover {
+    background-color: #333;
+  }
+  
