@@ -1,18 +1,19 @@
 /* Layout */
+
 .dashboard-layout {
   display: flex;
-  height: 100%;
+  min-height: 100vh;
   background-color: #1e1e2f;
-  color: #f5f7ff;
-  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Header */
+
+
 .dashboard-main {
-  flex-grow: 1;
-  display: flex;
-  margin-left: 180px;
-  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  overflow-x: auto;
+  background-color: #12121c;
+  color: white;
 }
 
 .dashboard-header {

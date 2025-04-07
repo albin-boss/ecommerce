@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './css/CustomerList.css';
-
+import Sidebar from './components/sidebar/sidebar';
 function CustomerList() {
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -31,7 +31,10 @@ function CustomerList() {
   };
 
   return (
+    <div className="dashboard-layout">
+        <Sidebar /> 
     <div className="customer-container">
+        
       <h2>All Customers</h2>
       <table className="customer-table">
         <thead>
@@ -40,7 +43,7 @@ function CustomerList() {
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Department</th>
+            <th>ADDRESS</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -51,7 +54,7 @@ function CustomerList() {
               <td>{cust.name}</td>
               <td>{cust.email}</td>
               <td>{cust.phoneNumber}</td>
-              <td>{cust.department}</td>
+              <td>{cust.address}</td>
               <td>
                 <button onClick={() => setSelectedCustomer(cust)}>View</button>
                 <button className="delete-btn" onClick={() => deleteCustomer(cust.id)}>Delete</button>
@@ -69,13 +72,14 @@ function CustomerList() {
             <p><strong>Name:</strong> {selectedCustomer.name}</p>
             <p><strong>Email:</strong> {selectedCustomer.email}</p>
             <p><strong>Phone:</strong> {selectedCustomer.phoneNumber}</p>
-            <p><strong>Department:</strong> {selectedCustomer.department}</p>
-            <p><strong>Position:</strong> {selectedCustomer.position}</p>
+            <p><strong>Address:</strong> {selectedCustomer.address}</p>
+            <p><strong>id:</strong> {selectedCustomer.id}</p>
             <p><strong>Status:</strong> {selectedCustomer.status}</p>
             <button onClick={() => setSelectedCustomer(null)}>Close</button>
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

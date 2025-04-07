@@ -30,6 +30,8 @@ import GiftCard from "./pages/GiftCard";
 import WishlistView from "./pages/WishlistView";
 import ProductDetail from "./pages/ProductDetail";
 import CustomerList from "./admin/CustomerList";
+import Allproduct from "./admin/allproduct";
+import EditProduct from "./admin/EditProduct";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -57,7 +59,8 @@ root.render(
           <Route path="/wishlist" element={<WishlistView/>}/>
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/customers" element={<CustomerList />} />
-
+          <Route path="/allproduct" element={<Allproduct/>}/>
+          <Route path="/update-product/:id" element={<EditProduct />} />
         </Routes>
       </Provider>
     </ScrollToTop>

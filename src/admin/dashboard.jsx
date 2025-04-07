@@ -131,9 +131,9 @@ function Dashboard() {
  
   return (
     <div className="dashboard-layout">
-       <Sidebar />
-
-      <main className="dashboard-main">
+    <Sidebar /> {/* This stays on the left */}
+    
+    <main className="dashboard-main">
         <header className="dashboard-header">
           <h1>Dashboard</h1>
           <div className="user-info">Welcome, Rebel!</div>

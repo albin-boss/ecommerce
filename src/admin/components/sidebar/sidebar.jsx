@@ -10,7 +10,7 @@ const Sidebar = () => {
       <ul className="sidebar-menu">
         <li><Link to="/dashboard">Dashboard</Link></li>
         <li><Link to="/customers">Users</Link></li>
-        <li><Link to="/products">Products</Link></li>
+        <li><Link to="/allproduct">Products</Link></li>
         <li><Link to="/orders">Orders</Link></li>
         <li><Link to="/offers">Offers</Link></li>
         <li><Link to="/category">Category</Link></li>
