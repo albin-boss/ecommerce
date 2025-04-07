@@ -29,6 +29,7 @@ import Profile from "./pages/profile";
 import GiftCard from "./pages/GiftCard";
 import WishlistView from "./pages/WishlistView";
 import ProductDetail from "./pages/ProductDetail";
+import CustomerList from "./admin/CustomerList";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -55,6 +56,7 @@ root.render(
           <Route path="/giftcard" element={<GiftCard/>}/>
           <Route path="/wishlist" element={<WishlistView/>}/>
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/customers" element={<CustomerList />} />
 
         </Routes>
       </Provider>
