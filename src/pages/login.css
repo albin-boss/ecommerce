@@ -1,10 +1,18 @@
+.header1 {
+  position: absolute; /* or fixed if you want it to stay on scroll */
+  top: 0;
+  left: 0;
+  padding: 20px;
+  
+}
+
 /* Login Page Container */
 .login-container {
     display: flex;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: #1a1a2e;
+    background-color: #0c0a0a;
     padding: 20px;
   }
   
@@ -12,12 +20,24 @@
   .login-box {
     width: 100%;
     max-width: 400px;
-    background: #2a2a40;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: radial-gradient(
+      ellipse at bottom,
+      rgba(71, 81, 92, 1) 0%,
+      rgba(11, 21, 30, 1) 45%
+    );
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+   
     text-align: center;
   }
+  .success-message {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  
   
   /* Title */
   .login-title {
