@@ -32,6 +32,7 @@ import ProductDetail from "./pages/ProductDetail";
 import CustomerList from "./admin/CustomerList";
 import Allproduct from "./admin/allproduct";
 import EditProduct from "./admin/EditProduct";
+import CategoryManager from "./admin/CategoryManager";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -61,6 +62,7 @@ root.render(
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/allproduct" element={<Allproduct/>}/>
           <Route path="/update-product/:id" element={<EditProduct />} />
+          <Route path="/categorymanager" element={<CategoryManager/>}/>
         </Routes>
       </Provider>
     </ScrollToTop>
