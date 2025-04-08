@@ -11,39 +11,16 @@ const PurchaseList = () => {
 
   const fetchPurchases = async () => {
     try {
-      const purchaseRes = await axios.get("http://localhost:8005/api/purchases");
-      const rawPurchases = purchaseRes.data;
-
-      const enrichedPurchases = await Promise.all(
-        rawPurchases.map(async (purchase) => {
-          let employeeName = "N/A";
-          let productImage = "";
-
-          try {
-            const empRes = await axios.get(`http://localhost:8005/api/employees/${purchase.employeeId}`);
-            employeeName = empRes.data.name;
-          } catch (e) {
-            console.warn("Employee fetch failed for ID:", purchase.employeeId);
-          }
-
-          try {
-            const prodRes = await axios.get(`http://localhost:8005/api/products/${purchase.productId}`);
-            productImage = prodRes.data.image1;
-          } catch (e) {
-            console.warn("Product fetch failed for ID:", purchase.productId);
-          }
-
-          return {
-            ...purchase,
-            employeeName,
-            productImage
-          };
-        })
-      );
-
-      setPurchases(enrichedPurchases);
+      const res = await axios.get("http://localhost:8005/api/purchases");
+      const enriched = res.data.map((purchase) => ({
+        ...purchase,
+        productImage: purchase.productImage
+          ? `http://localhost:8005/${purchase.productImage.replace(/^\/+/, "")}`
+          : "",
+      }));
+      setPurchases(enriched);
     } catch (error) {
-      console.error("Error fetching purchases:", error);
+      console.error("❌ Error fetching purchases:", error);
     }
   };
 
@@ -52,9 +29,9 @@ const PurchaseList = () => {
       await axios.put(
         `http://localhost:8005/api/purchases/${purchaseId}/status?status=${newStatus}`
       );
-      fetchPurchases(); // Refresh list
+      fetchPurchases();
     } catch (error) {
-      console.error("Error updating status:", error);
+      console.error("❌ Error updating status:", error);
     }
   };
 
@@ -79,16 +56,28 @@ const PurchaseList = () => {
               <td>{purchase.employeeName}</td>
               <td>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <img
-                    src={purchase.productImage}
-                    alt="Product"
-                    style={{ width: "50px", height: "50px", objectFit: "cover", borderRadius: "8px" }}
-                  />
-                  <span>{purchase.productId}</span>
+                  {purchase.productImage && (
+                    <img
+                      src={purchase.productImage}
+                      alt="Product"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                    />
+                  )}
+                  <span>{purchase.productName}</span>
                 </div>
               </td>
               <td>{purchase.quantity}</td>
-              <td>₹{purchase.totalAmount.toFixed(2)}</td>
+              <td>
+                {new Intl.NumberFormat("en-IN", {
+                  style: "currency",
+                  currency: "INR",
+                }).format(purchase.totalAmount)}
+              </td>
               <td>{purchase.shippingAddress}</td>
               <td>
                 <select

@@ -15,7 +15,7 @@ const Sidebar = () => {
         <li><Link to="/offermanager">Offers</Link></li>
         <li><Link to="/categorymanager">Category</Link></li>
         <li><Link to="/addproduct">Add Product</Link></li>
-        <li><Link to="/settings">Settings</Link></li>
+        <li><Link to="/login">Logout</Link></li>
       </ul>
     </aside>
   );
