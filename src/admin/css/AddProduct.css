@@ -1,5 +1,5 @@
 .custom-add-container {
-    max-width: 600px;
+    width: 100%;
     margin: 2rem auto;
     padding: 2rem;
     background: linear-gradient(to bottom right, #1e1e2f, #2c2c3a);

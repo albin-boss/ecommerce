@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./css/AddProduct.css";
+import Sidebar from './components/sidebar/sidebar';
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -54,7 +55,10 @@ const AddProduct = () => {
   };
 
   return (
+    <div className="dashboard-layout">
+      <Sidebar />
     <div className="custom-add-container">
+      
       <h2 className="custom-title">Add New Product</h2>
       <form onSubmit={handleSubmit} className="custom-form">
         <div className="custom-field">
@@ -157,6 +161,7 @@ const AddProduct = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

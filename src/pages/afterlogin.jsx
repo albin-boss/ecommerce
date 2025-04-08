@@ -112,8 +112,8 @@ const Home = () => {
           <input type="text" placeholder="Search for Products, Brands and More" />
         </div>
         <div className="actions">
-          <button className="button" onClick={() => navigate("/login")}>
-            <FaUser /> Logout
+          <button className="button" onClick={() => navigate("/profile")}>
+            <FaUser /> profile
           </button>
           <button className="button" onClick={() => navigate("/cart")}>
             <FaShoppingCart /> Cart

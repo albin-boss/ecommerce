@@ -1,33 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import "./css/ProudctList.css";
 
 const ITEMS_PER_PAGE = 5;
 
-// 🔥 Hook to get query params
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-// 📦 Product Card Component
-const ProductCard = ({ product, handleAddToCart }) => {
+const ProductCard = ({ product, handleAddToCart, handleWishlistToggle, isWishlisted, view }) => {
+  const navigate = useNavigate(); 
   return (
-    <div className="custom-product-card">
-      <img src={product.image1} alt={product.name} className="custom-product-image" />
-      <div className="custom-product-details">
-        <h2 className="custom-product-name">{product.name}</h2>
-        <div className="custom-product-rating">
-          <span className="custom-rating-value">⭐ {product.rating}</span>
-        </div>
-        <p className="custom-product-review">"{product.description}"</p>
-        <p className="custom-product-meta">₹{product.price}</p>
-        <p className="custom-product-meta">Category: {product.category}</p>
+    <div className={`custom-product-card ${view}`} onClick={() => navigate(`/product/${product.id}`)}>
+    <img src={product.image1} alt={product.name} className="custom-product-image" />
+    <div className="custom-product-details">
+      <h2 className="custom-product-name">{product.name}</h2>
+      <div className="custom-product-rating">
+        <span className="custom-rating-value">⭐ {product.rating}</span>
+      </div>
+      <p className="custom-product-review">"{product.description}"</p>
+      <p className="custom-product-meta">₹{product.price}</p>
+      <p className="custom-product-meta">Category: {product.category}</p>
+      <div className="custom-product-actions" onClick={(e) => e.stopPropagation()}>
         <button className="custom-add-to-cart" onClick={() => handleAddToCart(product.id)}>
           Add to Cart
         </button>
+        <button className="custom-wishlist-btn" onClick={() => handleWishlistToggle(product.id)}>
+          {isWishlisted ? "💔 Remove" : "💖 Wishlist"}
+        </button>
       </div>
     </div>
+  </div>
   );
 };
 
@@ -36,6 +41,9 @@ export default function ProductList() {
   const [categories, setCategories] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [sortType, setSortType] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [wishlist, setWishlist] = useState([]);
+  const [viewMode, setViewMode] = useState("list");
   const [page, setPage] = useState(1);
   const query = useQuery();
   const categoryFromURL = query.get("category");
@@ -48,6 +56,16 @@ export default function ProductList() {
     axios.get("http://localhost:8005/api/categories")
       .then(res => setCategories(res.data))
       .catch(err => console.error("Error fetching categories:", err));
+
+    const employeeId = localStorage.getItem("employeeId");
+    if (employeeId) {
+      axios.get(`http://localhost:8005/api/wishlist/${employeeId}`)
+        .then(res => {
+          const productIds = res.data.map(item => item.productId);
+          setWishlist(productIds);
+        })
+        .catch(err => console.error("Error loading wishlist:", err));
+    }
   }, []);
 
   useEffect(() => {
@@ -63,6 +81,10 @@ export default function ProductList() {
       filtered = filtered.filter(p => p.category === categoryFilter);
     }
 
+    if (searchTerm.trim()) {
+      filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+
     if (sortType === "priceLowHigh") {
       filtered.sort((a, b) => a.price - b.price);
     } else if (sortType === "priceHighLow") {
@@ -76,17 +98,13 @@ export default function ProductList() {
 
   const handleAddToCart = async (productId) => {
     const employeeId = localStorage.getItem("employeeId");
-
-    if (!employeeId) {
-      alert("Please log in to add items to cart.");
-      return;
-    }
+    if (!employeeId) return alert("Please log in to add items to cart.");
 
     try {
       await axios.post("http://localhost:8005/api/cart", {
         employeeId,
         productId,
-        quantity: 1
+        quantity: 1,
       });
       alert("Product added to cart!");
     } catch (error) {
@@ -95,25 +113,56 @@ export default function ProductList() {
     }
   };
 
+  const handleWishlistToggle = async (productId) => {
+    const employeeId = localStorage.getItem("employeeId");
+    if (!employeeId) return alert("Please log in to use wishlist.");
+
+    const isAlreadyWishlisted = wishlist.includes(productId);
+
+    try {
+      if (isAlreadyWishlisted) {
+        await axios.delete("http://localhost:8005/api/wishlist", {
+          data: { employeeId, productId },
+        });
+        setWishlist(prev => prev.filter(id => id !== productId));
+      } else {
+        await axios.post("http://localhost:8005/api/wishlist", { employeeId, productId });
+        setWishlist(prev => [...prev, productId]);
+      }
+    } catch (err) {
+      console.error("Wishlist error:", err);
+      alert("Something went wrong!");
+    }
+  };
+
   const filteredProducts = applyFilters();
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
-  const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedProducts = filteredProducts.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   return (
     <div>
-      {/* View Cart Button */}
-      <div style={{ display: "flex", justifyContent: "flex-end", padding: "1rem" }}>
-        <button
-          className="custom-view-cart-btn"
-          onClick={() => window.location.href = "/cart"}
-        >
+      {/* Top Bar */}
+      <div style={{ display: "flex", justifyContent: "space-between", padding: "1rem" }}>
+        <div style={{ padding: "0 1rem" }}>
+          <button className="custom-back-button" onClick={() => window.history.back()}>
+            🔙 Back
+          </button>
+        </div>
+
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
+          className="custom-search-bar"
+        />
+        <button className="custom-view-cart-btn" onClick={() => window.location.href = "/cart"}>
           🛒 View Cart
         </button>
       </div>
 
+      {/* Filters + View Mode Toggle */}
       <div className="custom-product-page">
-        {/* Sidebar */}
         <aside className="custom-sidebar">
           <h2 className="custom-sidebar-title">Filters</h2>
 
@@ -128,33 +177,39 @@ export default function ProductList() {
           </div>
 
           <div className="custom-filter-group">
-            <label>Sort By Price</label>
+            <label>Sort</label>
             <select value={sortType} onChange={(e) => { setSortType(e.target.value); setPage(1); }}>
               <option value="">None</option>
-              <option value="priceLowHigh">Low to High</option>
-              <option value="priceHighLow">High to Low</option>
+              <option value="priceLowHigh">Price: Low to High</option>
+              <option value="priceHighLow">Price: High to Low</option>
+              <option value="ratingHighLow">Rating: High to Low</option>
             </select>
           </div>
 
           <div className="custom-filter-group">
-            <label>Sort By Rating</label>
-            <select value={sortType} onChange={(e) => { setSortType(e.target.value); setPage(1); }}>
-              <option value="">None</option>
-              <option value="ratingHighLow">High to Low</option>
+            <label>View Mode</label>
+            <select value={viewMode} onChange={(e) => setViewMode(e.target.value)}>
+              <option value="grid">Grid</option>
+              <option value="list">List</option>
             </select>
           </div>
         </aside>
 
-        {/* Main Content */}
-        <div className="custom-product-main">
+        {/* Products Section */}
+        <div className={`custom-product-main ${viewMode}`}>
           <h1 className="custom-main-title">
             {categoryFilter === "All" ? "Top Deals on Mobile Phones" : `Products in ${categoryFilter}`}
           </h1>
 
           {paginatedProducts.map((product) => (
-            <div key={product.id} className="custom-product-wrapper">
-              <ProductCard product={product} handleAddToCart={handleAddToCart} />
-            </div>
+            <ProductCard
+              key={product.id}
+              product={product}
+              handleAddToCart={handleAddToCart}
+              handleWishlistToggle={handleWishlistToggle}
+              isWishlisted={wishlist.includes(product.id)}
+              view={viewMode}
+            />
           ))}
 
           {/* Pagination */}

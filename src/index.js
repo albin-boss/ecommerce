@@ -8,8 +8,7 @@ import store from "./redux/store";
 
 import {
   Home,
-  Product,
-  Products,
+  
   AboutPage,
   ContactPage,
   Cart,
@@ -18,13 +17,21 @@ import {
   Checkout,
   PageNotFound,
 } from "./pages";
-import ProductCard from "./pages/productcard";
+
 import ProductList from "./pages/ProductList";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import Dashboard from "./admin/dashboard";
 import Afterlogin from "./pages/afterlogin";
 import AddProduct from "./admin/AddProduct";
+import OrderDetails from "./pages/OrderDetails";
+import Profile from "./pages/profile";
+import GiftCard from "./pages/GiftCard";
+import WishlistView from "./pages/WishlistView";
+import ProductDetail from "./pages/ProductDetail";
+import CustomerList from "./admin/CustomerList";
+import Allproduct from "./admin/allproduct";
+import EditProduct from "./admin/EditProduct";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter >
@@ -32,12 +39,12 @@ root.render(
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product" element={<Products />} />
-          <Route path="/product/:id" element={<Product />} />
+          
+        
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/card" element={<ProductCard/>}/>
+          
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/checkout" element={<Checkout />} />
@@ -46,6 +53,14 @@ root.render(
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/afterlogin" element={<Afterlogin/>}/>
           <Route path="/addproduct" element={<AddProduct/>}/>
+          <Route path="/myorder" element={<OrderDetails/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/giftcard" element={<GiftCard/>}/>
+          <Route path="/wishlist" element={<WishlistView/>}/>
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/customers" element={<CustomerList />} />
+          <Route path="/allproduct" element={<Allproduct/>}/>
+          <Route path="/update-product/:id" element={<EditProduct />} />
         </Routes>
       </Provider>
     </ScrollToTop>
