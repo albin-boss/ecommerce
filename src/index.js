@@ -45,7 +45,7 @@ root.render(
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<Cart />} />
-          
+          <Route path="/categorymanager" element={<CategoryManager/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/checkout" element={<Checkout />} />
@@ -62,7 +62,6 @@ root.render(
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/allproduct" element={<Allproduct/>}/>
           <Route path="/update-product/:id" element={<EditProduct />} />
-          <Route path="/categorymanager" element={<CategoryManager/>}/>
         </Routes>
       </Provider>
     </ScrollToTop>
