@@ -4,7 +4,7 @@ import axios from 'axios';
 import './css/Dashboard.css';
 import { Link } from 'react-router-dom';
 import Sidebar from './components/sidebar/sidebar';
-
+import Overview from './components/Overview'; // ✅ Import Overview component
 
 function Dashboard() {
   const [barChartData, setBarChartData] = useState({ categories: [], counts: [] });
@@ -128,16 +128,18 @@ function Dashboard() {
     ],
     tooltip: { shared: true, intersect: false, theme: 'dark' },
   };
- 
+
   return (
     <div className="dashboard-layout">
-    <Sidebar /> {/* This stays on the left */}
-    
-    <main className="dashboard-main">
+      <Sidebar />
+
+      <main className="dashboard-main">
         <header className="dashboard-header">
           <h1>Dashboard</h1>
           <div className="user-info">Welcome, Rebel!</div>
         </header>
+
+        <Overview /> {/* ✅ Added Overview section */}
 
         <div className="chart-section vertical">
           <div className="chart-box">
