@@ -79,56 +79,30 @@ function Dashboard() {
     },
   };
 
-  const areaChartOptions = {
-    series: [
-      { name: 'Purchase Orders', data: [31, 40, 28, 51, 42, 109, 100] },
-      { name: 'Sales Orders', data: [11, 32, 45, 32, 34, 52, 41] },
-    ],
-    chart: { type: 'area', background: 'transparent', stacked: false, toolbar: { show: false } },
-    colors: ['#00ab57', '#d50000'],
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-    dataLabels: { enabled: false },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        opacityFrom: 0.4,
-        opacityTo: 0.1,
-        shadeIntensity: 1,
-        stops: [0, 100],
-        type: 'vertical',
-      },
+  const pieChartOptions = {
+    series: [44, 55, 13, 43, 22], // Sample sales data
+    labels: ['Electronics', 'Clothing', 'Books', 'Home Decor', 'Other'],
+    chart: {
+      type: 'pie',
+      background: 'transparent',
     },
-    grid: {
-      borderColor: '#55596e',
-      yaxis: { lines: { show: true } },
-      xaxis: { lines: { show: true } },
-    },
+    colors: ['#00ab57', '#d50000', '#ff9800', '#3f51b5', '#009688'],
     legend: {
-      labels: { colors: '#f5f7ff' },
-      show: true,
-      position: 'top',
-    },
-    markers: { size: 6, strokeColors: '#1b2635', strokeWidth: 3 },
-    stroke: { curve: 'smooth' },
-    xaxis: {
-      axisBorder: { show: true, color: '#55596e' },
-      axisTicks: { show: true, color: '#55596e' },
-      labels: { offsetY: 5, style: { colors: '#f5f7ff' } },
-    },
-    yaxis: [
-      {
-        title: { text: 'Purchase Orders', style: { color: '#f5f7ff' } },
-        labels: { style: { colors: ['#f5f7ff'] } },
+      position: 'bottom',
+      labels: {
+        colors: '#f5f7ff',
       },
-      {
-        opposite: true,
-        title: { text: 'Sales Orders', style: { color: '#f5f7ff' } },
-        labels: { style: { colors: ['#f5f7ff'] } },
+    },
+    dataLabels: {
+      style: {
+        colors: ['#fff'],
       },
-    ],
-    tooltip: { shared: true, intersect: false, theme: 'dark' },
+    },
+    tooltip: {
+      theme: 'dark',
+    },
   };
-
+  
   return (
     <div className="dashboard-layout">
       <Sidebar />
@@ -151,15 +125,19 @@ function Dashboard() {
               height={350}
             />
           </div>
-          <div className="chart-box">
-            <h3 className="chart-title">Monthly Orders Overview</h3>
-            <ReactApexChart
-              options={areaChartOptions}
-              series={areaChartOptions.series}
-              type="area"
-              height={350}
-            />
-          </div>
+          
+<div className="chart-box">
+  <h3 className="chart-title">Sales Distribution</h3>
+  <div className="chart-container" style={{ width: '100%', height: '350px' }}>
+    <ReactApexChart
+      options={pieChartOptions}
+      series={pieChartOptions.series}
+      type="pie"
+      width="100%"
+      height="100%"
+    />
+  </div>
+</div>
         </div>
 
         <div className="purchase-history">
