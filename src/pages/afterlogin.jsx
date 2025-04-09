@@ -120,19 +120,24 @@ const Home = () => {
           </button>
         </div>
       </header>
-
-      {/* Categories Navigation */}
-      <nav>
-        {loadingCategories ? (
-          <p style={{ color: "#fff" }}>Loading categories...</p>
-        ) : categories.length === 0 ? (
-          <p style={{ color: "#fff" }}>No categories found</p>
-        ) : (
-          categories.map(category => (
-            <button key={category.id}>{category.name}</button>
-          ))
-        )}
-      </nav>
+{/* Categories Navigation */}
+<nav>
+  {loadingCategories ? (
+    <p style={{ color: "#fff" }}>Loading categories...</p>
+  ) : categories.length === 0 ? (
+    <p style={{ color: "#fff" }}>No categories found</p>
+  ) : (
+    categories.map((category) => (
+      <Link 
+        to={`/productlist?category=${encodeURIComponent(category.name)}`} 
+        key={category.id} 
+        style={{ marginRight: '8px', textDecoration: 'none' }}
+      >
+        <button>{category.name}</button>
+      </Link>
+    ))
+  )}
+</nav>
 
       {/* Banner */}
       <div className="gallery-wrap">
