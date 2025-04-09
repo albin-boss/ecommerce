@@ -1,6 +1,12 @@
 // src/Home.jsx
 import React, { useState, useEffect } from "react";
-import { FaSearch, FaShoppingCart, FaUser, FaCommentDots, FaTimes } from "react-icons/fa";
+import {
+  FaSearch,
+  FaShoppingCart,
+  FaUser,
+  FaCommentDots,
+  FaTimes,
+} from "react-icons/fa";
 import Footer from "./Footer";
 import "./home.css";
 import { useNavigate, Link } from "react-router-dom";
@@ -9,14 +15,16 @@ import axios from "axios";
 function OffersGrid() {
   const [offersData, setOffersData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // Add useNavigate for routing
 
   useEffect(() => {
-    axios.get("http://localhost:8005/api/offers")
-      .then(response => {
+    axios
+      .get("http://localhost:8005/api/offers")
+      .then((response) => {
         setOffersData(response.data);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching offers:", error);
         setLoading(false);
       });
@@ -36,6 +44,7 @@ function OffersGrid() {
     padding: "16px",
     textAlign: "center",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+    cursor: "pointer",
   };
 
   const imgStyle = {
@@ -69,12 +78,12 @@ function OffersGrid() {
       ) : (
         <div style={gridStyle}>
           {offersData.map((offer) => (
-            <div style={cardStyle} key={offer.id}>
-              <img
-                style={imgStyle}
-                src={offer.image}
-                alt={offer.productName}
-              />
+            <div
+              style={cardStyle}
+              key={offer.id}
+              onClick={() => navigate(`/product/${offer.productId}`)}
+            >
+              <img style={imgStyle} src={offer.image} alt={offer.productName} />
               <h3 style={titleStyle}>{offer.productName}</h3>
               <p style={priceStyle}>₹{offer.price}</p>
             </div>
@@ -92,12 +101,13 @@ const Home = () => {
   const [loadingCategories, setLoadingCategories] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8005/api/categories")
-      .then(response => {
+    axios
+      .get("http://localhost:8005/api/categories")
+      .then((response) => {
         setCategories(response.data);
         setLoadingCategories(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching categories:", error);
         setLoadingCategories(false);
       });
@@ -109,7 +119,10 @@ const Home = () => {
         <h1>PREMIUM</h1>
         <div className="search-box">
           <FaSearch />
-          <input type="text" placeholder="Search for Products, Brands and More" />
+          <input
+            type="text"
+            placeholder="Search for Products, Brands and More"
+          />
         </div>
         <div className="actions">
           <button className="button" onClick={() => navigate("/profile")}>
@@ -120,24 +133,25 @@ const Home = () => {
           </button>
         </div>
       </header>
-{/* Categories Navigation */}
-<nav>
-  {loadingCategories ? (
-    <p style={{ color: "#fff" }}>Loading categories...</p>
-  ) : categories.length === 0 ? (
-    <p style={{ color: "#fff" }}>No categories found</p>
-  ) : (
-    categories.map((category) => (
-      <Link 
-        to={`/productlist?category=${encodeURIComponent(category.name)}`} 
-        key={category.id} 
-        style={{ marginRight: '8px', textDecoration: 'none' }}
-      >
-        <button>{category.name}</button>
-      </Link>
-    ))
-  )}
-</nav>
+
+      {/* Categories Navigation */}
+      <nav>
+        {loadingCategories ? (
+          <p style={{ color: "#fff" }}>Loading categories...</p>
+        ) : categories.length === 0 ? (
+          <p style={{ color: "#fff" }}>No categories found</p>
+        ) : (
+          categories.map((category) => (
+            <Link
+              to={`/productlist?category=${encodeURIComponent(category.name)}`}
+              key={category.id}
+              style={{ marginRight: "8px", textDecoration: "none" }}
+            >
+              <button>{category.name}</button>
+            </Link>
+          ))
+        )}
+      </nav>
 
       {/* Banner */}
       <div className="gallery-wrap">
@@ -156,7 +170,11 @@ const Home = () => {
             <p style={{ color: "#fff" }}>No categories available</p>
           ) : (
             categories.map((category) => (
-              <Link to={`/productlist?category=${encodeURIComponent(category.name)}`} className="item-link" key={category.id}>
+              <Link
+                to={`/productlist?category=${encodeURIComponent(category.name)}`}
+                className="item-link"
+                key={category.id}
+              >
                 <div className="item-card">
                   <img src={category.image} alt={category.name} />
                   <h4>{category.name}</h4>

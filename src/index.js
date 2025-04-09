@@ -66,6 +66,8 @@ root.render(
           <Route path="/update-product/:id" element={<EditProduct />} />
           <Route path="/offermanager" element={<OfferManager/>}/>
           <Route path="/purchaselist" element={<PurchaseList/>}/>
+
+
         </Routes>
       </Provider>
     </ScrollToTop>
